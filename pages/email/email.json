@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "my-input": "../../components/input/input"
+  },
+  "navigationBarTitleText": "修改邮箱地址"
+}

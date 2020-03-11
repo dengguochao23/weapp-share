@@ -1,0 +1,46 @@
+<view class="myWish bg">
+	<!-- <scroll-view wx-if="{{wishes.length>0}}" class="list" scroll-y="true">
+    <view class="item" wx:for="{{goods}}" wx:key="gid" wx:for-index="idx" wx:for-item="good">
+      <view class="head">
+        <text>{{good.time}}</text>
+        <text class="status">{{good.status}}</text>
+      </view>
+      <view class="container">
+        <van-image radius="10" width="80" height="80" src="{{logo}}" />
+        <view class="content">
+          <text>{{good.name}}/{{good.specification}}/{{good.detail}}</text>
+        </view>
+      </view>
+      <view class="bottom">
+        <view class="fromAdmin">
+          <text>{{good.fromAdmin}}</text>
+        </view>
+        <van-button type="primary" size="mini" round>小型按钮</van-button>
+      </view>
+    </view>
+  </scroll-view>
+  <my-nothing content="赶快点击下方增加你的愿望" class="none" wx:else></my-nothing> -->
+	<my-scroll class="list" height="88" refresherEnabled="true" refresherBackground="#F8F8F8">
+		<view class="item" wx:for="{{wishes}}" wx:key="gid" wx:for-index="idx" wx:for-item="wish">
+			<view class="head">
+				<text>{{wish.time}}</text>
+				<text class="status">{{wish.status}}</text>
+			</view>
+			<view class="container">
+				<van-image radius="10" width="80" height="80" src="{{logo}}" />
+				<view class="content">
+					<text>{{wish.name}}/{{wish.info}}</text>
+				</view>
+			</view>
+			<view class="bottom">
+				<view class="fromAdmin">
+					<text>{{good.status}}</text>
+				</view>
+				<van-button type="primary" size="mini" round>小型按钮</van-button>
+			</view>
+		</view>
+	</my-scroll>
+	<view class="but">
+		<van-button bind:click="onAddWish" round custom-class="vanButton" color="#1c92d2" type="primary" block>+新增你的愿望</van-button>
+	</view>
+</view>

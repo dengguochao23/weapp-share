@@ -1,0 +1,36 @@
+.weather-wrapper {
+  max-width: 100%;
+  border-radius: 10rpx;
+  padding: 30rpx 15rpx;
+  display: flex;
+  align-items: flex-end;
+  color: #ffff;
+}
+.good {
+  background: #f0cc35;
+}
+
+.excellent {
+  background: #91BF5C;
+}
+.light-pollution{
+  background: #F1AB62;
+}
+
+.city {
+  font-size: 45rpx;
+  margin-right: 10px;
+}
+
+.num {
+  font-size: 30rpx;
+  margin-left: 10px;
+}
+.weather{
+  font-size: 30rpx;
+  margin-left: 10px;
+}
+.quality{
+  font-size: 30rpx;
+  margin-left: 20px;
+}

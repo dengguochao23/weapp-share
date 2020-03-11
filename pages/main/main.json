@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-icon":"../../miniprogram_npm/@vant/weapp/icon",
+    "my-card": "../../components/card/card",
+    "my-info": "../../components/info/info",
+    "my-weather": "../../components/weather/weather",
+    "my-ad":"../../components/ad/ad",
+    "van-divider": "../../miniprogram_npm/@vant/weapp/divider"
+  }
+}

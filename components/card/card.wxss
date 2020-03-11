@@ -1,0 +1,31 @@
+/* components/card/card.wxss */
+.but{
+  border: none !important;
+  background-color: #1c92d2;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #ffff;
+  font-size: 30rpx;
+  position: relative;
+  /* background-color: #1c92d2; */
+  border: none;
+}
+.card .head{
+  display: flex;
+  align-items: center;
+}
+.card .mid .nickname{
+  margin-top: 20rpx;
+}
+.bottom{
+  margin-top: 20rpx;
+  text-align: left;
+}
+.image {
+  position: absolute;
+  right: 30rpx;
+  bottom: 30rpx;
+}

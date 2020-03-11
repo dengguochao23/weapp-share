@@ -1,0 +1,26 @@
+<view class="myGood bg">
+  <scroll-view wx:if="{{goods.length>0}}" style="height:{{height}}%" class="list" scroll-y="true">
+    <view class="item" wx:for="{{goods}}" wx:key="gid" wx:for-index="idx" wx:for-item="good">
+      <view class="head">
+        <text>{{good.time}}</text>
+        <text class="status">{{good.status}}</text>
+      </view>
+      <view class="container">
+        <van-image radius="10" width="80" height="80" src="{{logo}}" />
+        <view class="content">
+          <text>{{good.name}}/{{good.specification}}/{{good.detail}}</text>
+        </view>
+      </view>
+      <view class="bottom">
+        <view class="fromAdmin">
+          <text>{{good.fromAdmin}}</text>
+        </view>
+        <van-button type="primary" size="mini" round>小型按钮</van-button>
+      </view>
+    </view>
+  </scroll-view>
+  <my-nothing content="赶快点击下方增加你的愿望" wx:else></my-nothing>
+  <view class="but">
+    <van-button bind:click="onAddGood" round custom-class="vanButton" color="#1c92d2" type="primary" block>+新增你的货品</van-button>
+  </view>
+</view>

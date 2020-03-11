@@ -1,0 +1,15 @@
+/**app.wxss**/
+@import "./miniprogram_npm/@vant/weapp/common/index.wxss";
+
+page{
+  width: 100%;
+  height: 100%;
+}
+
+.bg {
+  /* background-color: #eeeeee; */
+  background-color: #F8F8F8;
+}
+.text-dsec {
+  color: #606266;
+}

@@ -1,0 +1,59 @@
+import {
+  config
+} from '../config.js'
+import {
+  Base64
+} from './base64.js'
+const tips = {
+  1000: '验证失败',
+  1001: '用户名已经被注册了',
+  1002: '备注名已经被注册了',
+  1003: 'token是非法的',
+  1004: '该房号已经有人注册了',
+  1005: '拒绝访问',
+  1006: '没找到任何东西',
+  1007: '亲，重复提交了',
+  1008: '亲，发现有相同的物品'
+}
+class HTTP {
+  get({url}) {
+    return new Promise((resolve, reject) => {
+      this._request(resolve, reject, url, "GET")
+    })
+  }
+  post({url,data}){
+    return new Promise((resolve,reject)=>{
+      this._request(resolve,reject,url,"POST",data)
+    })
+  }
+  _request(resolve, reject, url, method, data = {}) {
+    let user = wx.getStorageSync('token')
+    wx.request({
+      url: config.api_base_url + url,
+      method: method,
+      data: data,
+      header: {
+        'content-type': 'application/json',
+        'Authorization': 'Basic ' + Base64.encode(user + ':')
+      },
+      success: (res) => {
+        if (res.data.error_code) {
+          let error_code = res.data.error_code
+          wx.showToast({
+            title: tips[error_code],
+            icon: '',
+            duration: 2000
+          })
+          reject(tips[error_code])
+        } else {
+          resolve(res.data)
+        }
+      },
+      fail: (erroe) => {}
+    })
+  }
+}
+
+export {
+  HTTP
+}

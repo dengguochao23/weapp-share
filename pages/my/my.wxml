@@ -1,0 +1,26 @@
+<view class="my bg">
+	<view class="head">
+		<view class="card">
+			<van-image width="60" height="60" round="true" src="{{logo}}" />
+			<view class="info">
+				<text class="nickname">{{nickname}}</text>
+				<view class="num">
+					<text class="item star">好评：8</text>
+					<text class="item count">7豆：18</text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="title">
+		<van-divider contentPosition="center" customStyle="color: #eeeee;border-color: #eeeee;font-size: 24px;">个人资料</van-divider>
+	</view>
+	<view class="detail">
+		<van-cell-group>
+			<van-cell custom-class="title-class" bind:click="onRoom" title="房号" value="{{room}}" is-link/>
+			<van-cell custom-class="title-class" bind:click="onMobile" title="电话" value="{{mobile}}" is-link/>
+			<van-cell custom-class="title-class" bind:click="onEmail" title="邮箱" value="{{email}}" is-link/>
+			<van-cell custom-class="title-class" bind:click="onGoods" title="你的货品" value="{{goods}}" is-link/>
+			<van-cell custom-class="title-class" bind:click="onWish" title="你的求助" value="{{wish}}" is-link/>
+		</van-cell-group>
+	</view>
+</view>

@@ -1,0 +1,7 @@
+<view class="input-container">
+	<text class="title">{{title}}</text>
+	<view class="input-wrap">
+		<input class="input" placeholder="{{placeholder}}" placeholder-class="placeholder" value="{{value}}" bindblur="onBlur" bindconfirm="onConfirm"></input>
+	</view>
+  <van-toast id="van-toast" />
+</view>

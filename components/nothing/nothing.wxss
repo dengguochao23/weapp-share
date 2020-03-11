@@ -1,0 +1,16 @@
+.nothing{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.title{
+  font-size: 50rpx;
+  color: #1c92d2;
+}
+.content{
+  font-size: 24rpx;
+  color: #909399;
+}

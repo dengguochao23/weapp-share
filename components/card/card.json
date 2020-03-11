@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-image": "../../miniprogram_npm/@vant/weapp/image"
+  }
+}

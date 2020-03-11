@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/main/main",
+    "pages/help/help",
+    "pages/my/my",
+    "pages/mobile/mobile",
+    "pages/email/email",
+    "pages/room/room",
+    "pages/myGoods/myGoods",
+    "pages/addGood/addGood",
+    "pages/myWish/myWish",
+    "pages/addWish/addWish"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#1c92d2",
+    "navigationBarTitleText": "7享网",
+    "backgroundColor": "#1c92d2",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "custom": false,
+    "color": "#000000",
+    "selectedColor": "#1c92d2",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/main/main",
+        "text": "首页",
+        "iconPath": "./image/tab/main.png",
+        "selectedIconPath": "./image/tab/main@highlight.png"
+      },
+      {
+        "pagePath": "pages/help/help",
+        "text": "我的求助",
+        "iconPath": "./image/tab/wish.png",
+        "selectedIconPath": "./image/tab/wish@highlight.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我",
+        "iconPath": "./image/tab/my.png",
+        "selectedIconPath": "./image/tab/my@highlight.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-button": "./miniprogram_npm/@vant/weapp/button"
+  },
+  "sitemapLocation": "sitemap.json"
+}

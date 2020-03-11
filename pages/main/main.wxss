@@ -1,0 +1,72 @@
+/* pages/main/main.wxss */
+.main {
+  /* padding: 35rpx; */
+  height: 100%;
+}
+.card{
+  background-color: #1c92d2;
+  padding: 50rpx 35rpx 100rpx 35rpx;
+  margin-bottom: 30rpx;
+  border-bottom-left-radius: 45%;
+  border-bottom-right-radius: 45%;
+}
+.info{
+  padding: 0 35rpx;
+  margin-bottom: 30rpx;
+}
+.weather{
+  padding: 0 35rpx;
+  margin-bottom: 60rpx;
+}
+.section{
+  padding: 0 35rpx;
+  margin-bottom: 60rpx;
+}
+.section .title{
+  font-size: 40rpx;
+  color: black;
+  font-weight: 900;
+}
+
+.section .type{
+  margin-top: 30rpx;
+  width: 100%;
+}
+.section .type .item{
+  border-radius: 10rpx;
+  height: 70px;
+  display: flex;
+  font-size: 28rpx;
+  align-items: center;
+  justify-content: center;
+  padding: 15rpx;
+  color: #ffff;
+  margin-bottom: 10px;
+}
+.section .type .item .name{
+  margin-left: 30rpx;
+  flex: 1;
+}
+.section .type .item .name .title{
+  font-size: 35rpx;
+  color: #ffff;
+}
+.section .type .my{
+  background-color: #1B91F3;
+}
+.section .type .hot{
+  background-color:#F56C6C;
+}
+.section .type .help{
+  background-color: #07C160;
+}
+.section .type .history{
+  background-color: #909399;
+}
+.ad{
+  padding: 0 35rpx;
+  margin-bottom: 60rpx;
+}
+.infro{
+  text-align: center;
+}

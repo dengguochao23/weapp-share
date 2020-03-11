@@ -1,0 +1,4 @@
+<scroll-view style="height:{{height}}%" refresher-threshold="60" refresher-triggered refresher-background="refresherBackground" refresher-default-style="white" scroll-y="true" refresher-enabled="{{refresherEnabled}}" bindrefresherrefresh="onRefreshDown" bindscrolltolower="onScrollDown">
+  <slot></slot>
+  <text>这是slot</text>
+</scroll-view>

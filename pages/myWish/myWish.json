@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "my-nothing": "../../components/nothing/nothing",
+    "my-scroll": "../../components/scroll/scroll",
+    "van-image": "../../miniprogram_npm/@vant/weapp/image"
+  }
+}

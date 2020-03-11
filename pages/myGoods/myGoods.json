@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-image": "../../miniprogram_npm/@vant/weapp/image",
+    "my-nothing": "../../components/nothing/nothing"
+  },
+  "navigationBarTitleText": "我的物品"
+}

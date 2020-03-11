@@ -1,0 +1,42 @@
+<view class="Add bg">
+	<van-cell-group class="group">
+    <van-field
+    label="类别选择"
+    value="{{ goodType }}"
+    placeholder="请选择"
+    border="{{ true }}"
+    bind:focus="onShowSelect"
+    placeholder-style="color:#1c92d2"
+  />
+    <van-popup  position="bottom" show="{{ show }}" bind:close="onClose">
+      <van-picker show-toolbar="true" columns="{{ columns }}" value-key="values" bind:cancel="onClose"  bind:change="onChangeType" bind:confirm="onSelectType"/>
+    </van-popup>
+		<van-field
+    label="货品名字"
+    value="{{ name }}"
+    placeholder="请输入中文名字"
+    border="{{ true }}"
+    bind:change="onSetName"
+    placeholder-style="color:#1c92d2"
+  />
+  <van-field
+    label="货品规格"
+    value="{{ specification }}"
+    placeholder="请输入货品规格"
+    border="{{ true }}"
+    bind:change="onSetSpecification"
+    placeholder-style="color:#1c92d2"
+  />
+  <van-field
+    label="货品详情"
+    value="{{ detail }}"
+    placeholder="请输入货品详情"
+    border="{{ true }}"
+    type="textarea"
+    bind:change="onSetDetail"
+    autosize="true"
+    placeholder-style="color:#1c92d2"
+  />
+	</van-cell-group>
+  <van-button round  bind:click="onSave" custom-class="vanButton" color="#1c92d2" type="primary" block>保存</van-button>
+</view>

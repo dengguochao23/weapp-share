@@ -1,0 +1,14 @@
+<!--components/card/card.wxml-->
+<view class="card">
+	<view class="head">
+		<button plain="true" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" class="but">
+			<van-image width="100" height="100" round="true" src="{{logo}}" />
+		</button>
+	</view>
+	<view class="mid">
+		<text class="nickname">Hi,{{nickname}}</text>
+	</view>
+	<view class="bottom">
+		<text class="text-dsec">房号：{{room}}</text>
+	</view>
+</view>

@@ -1,0 +1,64 @@
+<!--pages/main/main.wxml-->
+<view class="main bg">
+	<view class="card">
+		<my-card nickname="{{nickname}}" logo="{{logo}}" bind:gotUserInfo="onGetUserInfo"></my-card>
+	</view>
+	<view class="info">
+		<my-info></my-info>
+	</view>
+	<view class="section">
+		<van-divider contentPosition="center" textColor="black" customStyle="font-size: 20px;border-color: #1c92d2;">功能</van-divider>
+		<view class="type">
+			<view class="item my">
+				<van-icon size="50px" name="phone-o" />
+				<view class="name">
+					<rich-text class="title">
+						<text>我要求助</text>
+					</rich-text>
+					<text>我要求助</text>
+				</view>
+				<van-icon size="30px" name="arrow" />
+			</view>
+			<view class="item hot">
+				<van-icon size="50px" name="hot-o" />
+				<view class="name">
+					<rich-text class="title">
+						<text>热心住户</text>
+					</rich-text>
+					<text>热心住户</text>
+				</view>
+				<van-icon size="30px" name="arrow" />
+			</view>
+			<view class="item help">
+				<van-icon size="50px" name="question-o" />
+				<view class="name">
+					<rich-text class="title">
+						<text>他人求助</text>
+					</rich-text>
+					<text>他人求助</text>
+				</view>
+				<van-icon size="30px" name="arrow" />
+			</view>
+			<view class="item history">
+				<van-icon size="50px" name="bag-o" />
+				<view class="name">
+					<rich-text class="title">
+						<text>我的足迹</text>
+					</rich-text>
+					<text>我的足迹</text>
+				</view>
+				<van-icon size="30px" name="arrow" />
+			</view>
+		</view>
+	</view>
+	<view class="weather">
+		<van-divider contentPosition="center" textColor="black" customStyle="font-size: 20px;border-color: #1c92d2;">天气</van-divider>
+		<my-weather temp="{{temp}}"></my-weather>
+	</view>
+	<view class="ad">
+		<my-ad></my-ad>
+	</view>
+	<view class="infro">
+		<text>使用流程</text>
+	</view>
+</view>

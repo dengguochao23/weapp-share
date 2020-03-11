@@ -1,0 +1,6 @@
+<view class="room">
+  <my-input class="input" type="number" title="栋号" placeholder="{{mobile}}" verifyType="number" bind:onBlur="onSetBuild"></my-input>
+  <my-input class="input" type="number" title="单元" placeholder="{{mobile}}" verifyType="number" bind:onBlur="onSetUnit"></my-input>
+  <my-input class="input" type="number" title="房号" placeholder="{{mobile}}" verifyType="number" bind:onBlur="onBSetRoom"></my-input>
+  <van-button bind:click="onSubmit" class="but" color="#1c92d2" type="primary" size="large">大号按钮</van-button>
+</view>
