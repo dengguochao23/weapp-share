@@ -1,0 +1,27 @@
+<view class="ask bg">
+  <van-search class="search" bind:clear="onClean" bind:change="onChange" bind:search="onSearch" placeholder="请输入你搜索的内容" shape="round" value="{{ value }}" background="#1c92d2"></van-search>
+  <view class="scroll">
+    <my-scroll wx-if="{{goods.length>0}}" class="list" height="100" page="{{page}}" prepage="4" total="{{total}}" bind:onPullUp="onPullUp" data="{{goods}}">
+    <view class="item" data-gid="{{good.gid}}" bindtap="onSelectGood" wx:for="{{goods}}" wx:key="idx" wx:for-index="idx" wx:for-item="good">
+      <view class="head">
+        <view class="user">
+          <van-icon name="contact" />
+          <text class="name">{{good.user['nickname']}}</text>
+        </view>
+        <text class="time">{{good.time}}</text>
+      </view>
+      <view class="container">
+        <van-image radius="10" width="80" height="80" src="{{logo}}" />
+        <view class="content">
+          <text>{{good.name}}/{{good.specification}}/{{good.detail}}</text>
+        </view>
+      </view>
+      <view class="bottom">
+        <text>{{good.content}}/{{good.subsname}}</text>
+      </view>
+    </view>
+  </my-scroll>
+  <my-nothing wx:else></my-nothing>
+  </view>
+  <van-toast id="van-toast" />
+</view>

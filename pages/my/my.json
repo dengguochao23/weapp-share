@@ -4,5 +4,6 @@
     "van-divider": "../../miniprogram_npm/@vant/weapp/divider",
     "van-cell": "../../miniprogram_npm/@vant/weapp/cell",
     "van-cell-group": "../../miniprogram_npm/@vant/weapp/cell-group"
-  }
+  },
+  "navigationBarTitleText": "我的资料"
 }

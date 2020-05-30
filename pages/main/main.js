@@ -1,4 +1,3 @@
-// pages/main/main.js
 import {
   HTTP
 } from '../../util/http.js'
@@ -14,117 +13,64 @@ import {
 import {
   _getUserInfo
 } from '../../util/getUser'
+import {
+  getUserDetail,
+  saveUserByNickname,
+  saveUserByImage
+} from '../../api/user'
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
 const http = new HTTP()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     temp: {},
     nickname: '',
-    logo: ''
+    logo: '',
+    room: '0-0-0',
+    count: 0,
+    goods: 0,
+    wishes: 0,
+    comment: 0,
+    count: 0
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-    // http.request({
-    //   url: 'user',
-    //   success: (res) => {
-    //     console.log(res.data)
-    //   }
-    // })
-    this.onWeather()
-    _getUserInfo().then(res=>{
+    _getUserInfo().then(res => {
       const nickname = res.userInfo.nickName
       const logo = res.userInfo.avatarUrl
       this.setData({
         nickname: nickname,
-        logo:logo
+        logo: logo
       })
+    }).then(res => {
+      this._getUserDetail()
     }).then(res=>{
-      this._login()
+      this.onWeather()
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
+  onReady: function () {},
   onShow: function () {
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-  openSetting() {
-    wx.authorize({
-      scope: 'scope.record',
-      success() {
-        // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
-        wx.startRecord()
-      }
-    })
   },
   onGetUserInfo(event) {
     this._login()
   },
-  userInfoReadyCallback (res) {
-  },
   // 第一次登陆获取token
-  _login(){
+  _login() {
     wx.login({
       complete: (res) => {
-        _getUserInfo().then(res=>{
+        _getUserInfo().then(res => {
           const nickname = res.userInfo.nickName
           const logo = res.userInfo.avatarUrl
           this.setData({
             nickname: nickname,
-            logo:logo
+            logo: logo
           })
+          this._getUserDetail()
+          saveUserByNickname(nickname)
+          saveUserByImage(logo)
         })
       },
-      success(res){
-        if(res.code){
-          getToken(res.code).then((res)=>{
+      success(res) {
+        if (res.code) {
+          getToken(res.code).then((res) => {
             wx.setStorage({
               data: res.token,
               key: 'token',
@@ -134,11 +80,48 @@ Page({
       }
     })
   },
+  _getUserDetail() {
+    Toast.loading({
+      mask: true,
+      message: '加载中...'
+    })
+    getUserDetail().then(res => {
+      let room = res.building == null ? '空' : `${res.building}-${res.unit}-${res.room}`
+      this.setData({
+        room: room,
+        count: res.count,
+        goods: res.goods,
+        comment: res.comment,
+        helps: res.helps
+      })
+    }).then(res => {
+      Toast.clear();
+    })
+  },
   onWeather() {
     getWeather().then((res) => {
       this.setData({
         temp: creatWeather(res)
       })
     })
+  },
+  // 各种路由
+  onAskForHelp() {
+    wx.navigateTo({
+      url: '/pages/askForHelp/askForHelp',
+    })
+  },
+  onHot () {
+    wx.navigateTo({
+      url: '/pages/hot/hot',
+    })
+  },
+  onHelp() {
+    wx.navigateTo({
+      url: '/pages/help/help',
+    })
+  },
+  onShop(){
+    console.log('商城')
   }
 })

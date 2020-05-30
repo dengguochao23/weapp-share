@@ -3,12 +3,11 @@ import {
 } from '../api/good'
 const content = {
   '生活': [],
-  '厨房': [],
   '科技': [],
-  '客厅': [],
-  '阳台': [],
-  '洗手间': [],
-  '体育': []
+  '运动': [],
+  '医学': [],
+  '文化': [],
+  '家电': []
 }
 
 function getAllSubs() {
@@ -34,7 +33,7 @@ function normalSub(subs) {
 }
 
 function findContent(content) {
-  let name = ['生活', '厨房', '科技', '客厅', '阳台', '洗手间', '体育']
+  let name = ['生活', '科技', '运动', '医学', '阳台', '文化', '家电']
   for (let i = 0; i < name.length; i++) {
     let c = name[i]
     if (c === content) {

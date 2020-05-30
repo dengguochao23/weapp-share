@@ -1,1 +1,59 @@
-/* pages/help/help.wxss */
+.help{
+  width: 100%;
+  height: 100%;
+}
+.picker{
+  width: 100%;
+  height: 45px;
+  color: white;
+  background-color: #1c92d2;
+  text-align: center;
+  line-height: 45px;
+}
+.picker text{
+  margin-left: 8px;
+}
+.table {
+  width: 100%;
+  height: 45px;
+  color: white;
+  background-color: #1c92d2;
+  display: flex;
+  align-items: center;
+}
+.table text{
+  width: 33.3%;
+  text-align: center;
+}
+.scroll {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 90px;
+}
+.item {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 70rpx;
+  font-size: 24rpx;
+  margin-top: 10px;
+}
+.item text{
+  width: 33.3%;
+  text-align: center;
+}
+.myWish{
+  padding-top: 10px;
+}
+.myWish .title{
+  height: 16%;
+  width: 100%;
+  text-align: center;
+}
+.myWish .vanButton{
+  margin-top: 30px;
+  width: 80%;
+}

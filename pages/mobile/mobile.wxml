@@ -1,5 +1,5 @@
 <!--pages/mobile/mobile.wxml-->
 <view class="mobile">
   <my-input class="input" title="手机号码" placeholder="{{mobile}}" bind:onConfirm="onConfirm" bind:onBlur="onBlur"></my-input>
-  <van-button bind:click="onSubmit" class="but" color="#1c92d2" type="primary" size="large">大号按钮</van-button>
+  <van-button bind:click="onSubmit" class="but" color="#1c92d2" type="primary" size="large">保存</van-button>
 </view>

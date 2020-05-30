@@ -8,7 +8,7 @@ page{
 
 .bg {
   /* background-color: #eeeeee; */
-  background-color: #F8F8F8;
+  background-color: #F0F2F5;
 }
 .text-dsec {
   color: #606266;

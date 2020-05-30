@@ -2,6 +2,8 @@
   "usingComponents": {
     "my-nothing": "../../components/nothing/nothing",
     "my-scroll": "../../components/scroll/scroll",
-    "van-image": "../../miniprogram_npm/@vant/weapp/image"
-  }
+    "van-image": "../../miniprogram_npm/@vant/weapp/image",
+    "my-loading": "../../components/loading/loading"
+  },
+  "navigationBarTitleText": "我的请求"
 }

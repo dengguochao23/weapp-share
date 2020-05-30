@@ -1,0 +1,38 @@
+<view class="drift bg">
+	<van-tabs active="{{'all'}}" bind:change="onSelect" color="#FFFFFF" nav-class="nav" swipeable border="{{false}}">
+		<van-tab name='all' tab-class="tab" tab-active-class="active" title-style="color:white" title="全部">
+		</van-tab>
+		<van-tab name='helper' tab-class="tab" tab-active-class="active" title-style="color:white" title="我是求助者">
+		</van-tab>
+		<van-tab name='sharer' tab-class="tab" tab-active-class="active" title-style="color:white" title="我是分享者">
+		</van-tab>
+	</van-tabs>
+	<view class="list">
+		<my-scroll wx-if="{{pending.length>0}}" height="100" page="{{page}}" prepage="4" total="{{total}}" bind:onPullUp="onPullUp" data="{{goods}}">
+			<view class="item" wx:for="{{pending}}" wx:key="idx" wx:for-index="idx" wx:for-item="good">
+				<view class="head">
+					<view class="user">
+						<van-icon name="contact" />
+						<text class="name">{{good.youare=='helper'?'我是求助者':'我是分享者'}}</text>
+					</view>
+					<text class="status">{{good.req}}</text>
+				</view>
+				<view class="container">
+					<van-image radius="10" width="80" height="80" src="{{logo}}" />
+					<view class="content">
+						<text>{{good.name}}/{{good.specification}}/{{good.detail}}</text>
+					</view>
+				</view>
+				<view class="bottom">
+					<text>{{good.time}}</text>
+					<van-button wx-if="{{good.req=='等待对方审核'}}" data-id="{{good.id}}" data-youare="{{good.youare}}" data-pending="{{good.pending}}" data-gid="{{good.gid}}" bind:click="onCancel" type="danger" size="mini" round>撤销</van-button>
+					<van-button wx-if="{{good.req=='等待你审核'}}" data-id="{{good.id}}" data-youare="{{good.youare}}" data-pending="{{good.pending}}" data-gid="{{good.gid}}" color="#1c92d2" bind:click="onConfirm" size="mini" round>同意</van-button>
+					<van-button class="but" wx-if="{{good.req=='等待你审核'}}" data-id="{{good.id}}" data-youare="{{good.youare}}" data-pending="{{good.pending}}" data-gid="{{good.gid}}" type="danger" bind:click="onConfirm" size="mini" round>拒绝</van-button>
+					<van-button wx-if="{{good.req=='你已收到物品，整个流程结束'}}" data-id="{{good.id}}" data-youare="{{good.youare}}" data-pending="{{good.pending}}" data-gid="{{good.gid}}" bind:click="onComment" size="mini" round>评论</van-button>
+				</view>
+			</view>
+		</my-scroll>
+		<my-nothing class="nothing" wx-else content="赶快点击下方增加你的愿望" wx:else></my-nothing>
+	</view>
+	<van-toast id="van-toast" />
+</view>

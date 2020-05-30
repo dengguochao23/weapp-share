@@ -1,4 +1,4 @@
-// pages/email/email.js
+import{saveUserByEmail} from '../../api/user'
 Page({
 
   /**
@@ -95,7 +95,9 @@ Page({
   onSubmit(){
     const email = this.data.email
     if (this.verify(email)){
-      console.log('提交')
+      saveUserByEmail(email).then(res=>{
+        wx.navigateBack()
+      })
     }
   }
 })

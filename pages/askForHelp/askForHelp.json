@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-search":"../../miniprogram_npm/@vant/weapp/search",
+    "my-scroll": "../../components/scroll/scroll",
+    "my-nothing": "../../components/nothing/nothing",
+    "van-image": "../../miniprogram_npm/@vant/weapp/image",
+    "van-icon": "../../miniprogram_npm/@vant/weapp/icon"
+  },
+  "navigationBarTitleText": "我要求助"
+}

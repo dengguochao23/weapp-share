@@ -1,6 +1,7 @@
 <view class="myGood bg">
-  <scroll-view wx:if="{{goods.length>0}}" style="height:{{height}}%" class="list" scroll-y="true">
-    <view class="item" wx:for="{{goods}}" wx:key="gid" wx:for-index="idx" wx:for-item="good">
+  <view class="scroll">
+    <my-scroll wx-if="{{goods.length>0}}" class="list" height="100" page="{{page}}" prepage="4" total="{{total}}" bind:onPullUp="onPullUp" data="{{goods}}">
+		<view class="item" wx:for="{{goods}}" wx:key="idx" wx:for-index="idx" wx:for-item="good">
       <view class="head">
         <text>{{good.time}}</text>
         <text class="status">{{good.status}}</text>
@@ -15,11 +16,13 @@
         <view class="fromAdmin">
           <text>{{good.fromAdmin}}</text>
         </view>
-        <van-button type="primary" size="mini" round>小型按钮</van-button>
+        <van-button wx-if="{{good.status=='使用中'}}" data-gid="{{good.gid}}" bind:click="onCancel" type="danger" size="mini" round>撤销</van-button>
+        <van-button wx:else data-gid="{{good.gid}}" color="#1c92d2" bind:click="onConfirm" size="mini" round>使用</van-button>
       </view>
     </view>
-  </scroll-view>
+	</my-scroll>
   <my-nothing content="赶快点击下方增加你的愿望" wx:else></my-nothing>
+  </view>
   <view class="but">
     <van-button bind:click="onAddGood" round custom-class="vanButton" color="#1c92d2" type="primary" block>+新增你的货品</van-button>
   </view>

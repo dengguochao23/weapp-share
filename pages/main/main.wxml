@@ -1,15 +1,15 @@
 <!--pages/main/main.wxml-->
 <view class="main bg">
 	<view class="card">
-		<my-card nickname="{{nickname}}" logo="{{logo}}" bind:gotUserInfo="onGetUserInfo"></my-card>
+		<my-card room="{{room}}" nickname="{{nickname}}" logo="{{logo}}" bind:gotUserInfo="onGetUserInfo"></my-card>
 	</view>
 	<view class="info">
-		<my-info></my-info>
+		<my-info goods="{{goods}}" helps="{{helps}}" comment="{{comment}}" count="{{count}}"></my-info>
 	</view>
 	<view class="section">
 		<van-divider contentPosition="center" textColor="black" customStyle="font-size: 20px;border-color: #1c92d2;">功能</van-divider>
 		<view class="type">
-			<view class="item my">
+			<view bindtap="onAskForHelp" class="item my">
 				<van-icon size="50px" name="phone-o" />
 				<view class="name">
 					<rich-text class="title">
@@ -19,7 +19,7 @@
 				</view>
 				<van-icon size="30px" name="arrow" />
 			</view>
-			<view class="item hot">
+			<view class="item hot" bindtap="onHot">
 				<van-icon size="50px" name="hot-o" />
 				<view class="name">
 					<rich-text class="title">
@@ -29,7 +29,7 @@
 				</view>
 				<van-icon size="30px" name="arrow" />
 			</view>
-			<view class="item help">
+			<view class="item help" bindtap="onHelp">
 				<van-icon size="50px" name="question-o" />
 				<view class="name">
 					<rich-text class="title">
@@ -39,13 +39,13 @@
 				</view>
 				<van-icon size="30px" name="arrow" />
 			</view>
-			<view class="item history">
+			<view class="item history" bindtap="onShop">
 				<van-icon size="50px" name="bag-o" />
 				<view class="name">
 					<rich-text class="title">
-						<text>我的足迹</text>
+						<text>我的商城</text>
 					</rich-text>
-					<text>我的足迹</text>
+					<text>我的商城</text>
 				</view>
 				<van-icon size="30px" name="arrow" />
 			</view>
@@ -62,3 +62,4 @@
 		<text>使用流程</text>
 	</view>
 </view>
+<van-toast id="van-toast" />

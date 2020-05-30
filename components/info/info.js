@@ -4,7 +4,22 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    goods: {
+      type: Number,
+      value: 0
+    },
+    helps: {
+      type: Number,
+      value: 0
+    },
+    comment:{
+      type: Number,
+      value: 0
+    },
+    count: {
+      type: Number,
+      value: 0
+    }
   },
 
   /**

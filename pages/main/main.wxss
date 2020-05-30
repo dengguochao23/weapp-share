@@ -1,7 +1,5 @@
-/* pages/main/main.wxss */
 .main {
-  /* padding: 35rpx; */
-  height: 100%;
+  min-height: 100%;
 }
 .card{
   background-color: #1c92d2;

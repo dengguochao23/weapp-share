@@ -1,2 +1,38 @@
-<!--pages/help/help.wxml-->
-<text>pages/help/help.wxml</text>
+<view class="help bg">
+	<view class="picker" bind:tap="showTypePopup">
+		<van-icon name="arrow-down" />
+		<text>{{select}}</text>
+	</view>
+	<view class="table">
+		<text>求助人</text>
+		<text>求助分类</text>
+		<text>物品名称</text>
+	</view>
+	<view class="scroll">
+		<my-scroll wx-if="{{wishes.length>0}}" class="list" height="100" page="{{page}}" prepage="10" total="{{total}}" bind:onPullUp="onPullUp" data="{{wishes}}">
+			<view class="item" wx:for="{{wishes}}" bindtap="onSelectWish" data-wishId="{{wish.id}}" data-uid="{{wish.user['id']}}" data-name="{{wish.name}}" wx:key="idx" wx:for-index="idx" wx:for-item="wish">
+				<text class="nickname">{{wish.user['nickname']}}</text>
+				<text class="subs">{{wish.subsname}}</text>
+				<text class="good">{{wish.name}}</text>
+			</view>
+		</my-scroll>
+		<my-nothing content="空空如也" wx:else></my-nothing>
+	</view>
+	<van-popup show="{{showType}}" bind:close="closePopup" position="bottom" custom-style="height: 40%;">
+		<van-picker default-index="1" show-toolbar title="标题" bind:cancel="closePopup" value-key="values" columns="{{ columns }}" bind:change="onChangeType" bind:confirm="onSelectType" />
+	</van-popup>
+	<van-popup class="myWish"  show="{{showMyWish}}" bind:close="closePopup" position="bottom" custom-style="height: 40%;">
+		<view class="title">你所拥有的物品</view>
+		<scroll-view scroll-y="true" style="height:50%">
+			<van-radio-group value="{{ radio }}" bind:change="onChange">
+				<van-cell-group>
+					<van-cell wx:for="{{goods}}" clickable wx:key="idx" wx:for-index="idx" wx:for-item="good" title="{{good.name}}" clickable data-name="{{good.name}}" data-gid="{{good.gid}}" bind:click="onRadio">
+						<van-radio slot="right-icon" name="{{good.name}}" />
+					</van-cell>
+				</van-cell-group>
+			</van-radio-group>
+		</scroll-view>
+		<van-button round  bind:click="onSendMyGood" custom-class="vanButton" color="#1c92d2" type="primary" block>保存</van-button>
+	</van-popup>
+	<van-toast id="van-toast" />
+</view>

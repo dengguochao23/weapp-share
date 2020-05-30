@@ -25,7 +25,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.2",
+	"libVersion": "2.10.1",
 	"appid": "wx1f3bce794ade6270",
 	"projectname": "share",
 	"debugOptions": {
@@ -81,9 +81,36 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/addWish/addWish",
-					"pathName": "pages/addWish/addWish",
+					"name": "pages/drift/drift",
+					"pathName": "pages/drift/drift",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/help/help",
+					"pathName": "pages/help/help",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/drift/drift",
+					"pathName": "pages/drift/drift",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/hot/hot",
+					"pathName": "pages/hot/hot",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/use/use",
+					"pathName": "pages/use/use",
 					"scene": null
 				}
 			]

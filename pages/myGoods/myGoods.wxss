@@ -3,9 +3,14 @@
   height: 100%;
 }
 
-.list{
+.scroll{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 12%;
 }
-.list .item{
+.scroll .list .item{
   width: 95%;
   min-height: 200rpx;
   background-color: white;
@@ -15,7 +20,7 @@
   margin-top: 15px;
   margin-bottom: 15px;
 }
-.list .item .head{
+.scroll .list .item .head{
   height: 80rpx;
   display: flex;
   justify-content: space-between;
@@ -25,12 +30,17 @@
   border-bottom: 1px solid #DCDFE6;
   font-size: 26rpx;
 }
-.list .item .container{
+.scroll .list .item .head .user{
+  display: flex;
+  align-items: center;
+}
+.scroll .list .item .container{
   display: flex;
   margin: 30rpx 20rpx 0 20rpx;
   align-items: center;
+  
 }
-.list .item .container .content{
+.scroll .list .item .container .content{
   flex: 1;
   width: 200rpx;
   font-size: 32rpx;
@@ -41,14 +51,7 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
-.list .item .container .content .name{
-  white-space: nowrap;
-}
-.list .item .container .content .detail{
-  overflow: hidden;
-  white-space: pre-wrap;
-}
-.list .item .bottom{
+.scroll .list .item .bottom{
   display: flex;
   justify-content: space-between;
   height: 80rpx;

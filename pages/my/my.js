@@ -1,4 +1,8 @@
 import {_getUserInfo} from '../../util/getUser'
+import { getUserDetail }from '../../api/user'
+import { getAllSubs } from '../../util/getSubs'
+import { getContents} from '../../api/good'
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
 Page({
 
   /**
@@ -6,20 +10,29 @@ Page({
    */
   data: {
     logo: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
-    room: '103 - 1 - 1502',
-    mobile: 13450046634,
-    email: 'ole23@qq.com',
-    star: 2,
-    count: 10,
-    goods: 10,
-    wish: 5,
-    nickname: '请登录'
+    room: '0-0-0',
+    mobile: '空',
+    email: '空',
+    star: 0,
+    count: 0,
+    goods: 0,
+    wish: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      // 获取subs列表并放在缓存中
+    getAllSubs()
+    // 获取content类别并放在缓存中
+    getContents().then(res=>{
+      wx.setStorageSync('content', res)
+    })
+    Toast.loading({
+      mask: true,
+      message: '加载中...'
+    })
     _getUserInfo().then(res => {
       const nickname = res.userInfo.nickName
       const logo = res.userInfo.avatarUrl
@@ -27,6 +40,7 @@ Page({
         nickname: nickname,
         logo: logo
       })
+      this._getUserDetail()
     })
   },
 
@@ -41,7 +55,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    Toast.loading({
+      mask: true,
+      message: '加载中...'
+    })
+    this._getUserDetail()
   },
 
   /**
@@ -58,7 +76,7 @@ Page({
   },
   // 各种路由
   onMobile() {
-    let data = JSON.parse(this.data.mobile)
+    let data = this.data.mobile == '空'? this.data.mobile: JSON.parse(this.data.mobile)
     wx.navigateTo({
       url: '/pages/mobile/mobile',
       events: {
@@ -102,5 +120,20 @@ Page({
       url: '/pages/myWish/myWish',
     })
   },
-  onGotUserInfo(event) {}
+  _getUserDetail(){
+    getUserDetail().then(res=>{
+      let room = res.building == null ? '空':`${res.building}-${res.unit}-${res.room}`
+      this.setData({
+        room: room,
+        mobile: res.mobile|| '空',
+        email: res.email || '空',
+        star: res.star,
+        count: res.count,
+        goods: res.goods,
+        wish: res.wishes,
+      })
+    }).then(res=>{
+      Toast.clear();
+    })
+  }
 })

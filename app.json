@@ -9,14 +9,20 @@
     "pages/myGoods/myGoods",
     "pages/addGood/addGood",
     "pages/myWish/myWish",
-    "pages/addWish/addWish"
+    "pages/addWish/addWish",
+    "pages/askForHelp/askForHelp",
+    "pages/help-detail/help-detail",
+    "pages/drift/drift",
+    "pages/comment/comment",
+    "pages/myHelp/myHelp",
+    "pages/hot/hot",
+    "pages/use/use"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#1c92d2",
     "navigationBarTitleText": "7享网",
-    "backgroundColor": "#1c92d2",
-    "enablePullDownRefresh": true
+    "backgroundColor": "#1c92d2"
   },
   "tabBar": {
     "custom": false,
@@ -31,8 +37,8 @@
         "selectedIconPath": "./image/tab/main@highlight.png"
       },
       {
-        "pagePath": "pages/help/help",
-        "text": "我的求助",
+        "pagePath": "pages/drift/drift",
+        "text": "我的足迹",
         "iconPath": "./image/tab/wish.png",
         "selectedIconPath": "./image/tab/wish@highlight.png"
       },
@@ -45,7 +51,8 @@
     ]
   },
   "usingComponents": {
-    "van-button": "./miniprogram_npm/@vant/weapp/button"
+    "van-button": "./miniprogram_npm/@vant/weapp/button",
+    "van-toast": "./miniprogram_npm/@vant/weapp/toast"
   },
   "sitemapLocation": "sitemap.json"
 }

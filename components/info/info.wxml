@@ -1,19 +1,19 @@
 <!--components/info/info.wxml-->
 <view class="info van-hairline--surround">
 	<view class="item">
-		<text class="num">1</text>
+		<text class="num">{{helps}}</text>
 		<text class="name">求助</text>
 	</view>
 	<view class="item">
-		<text class="num">1</text>
+		<text class="num">{{goods}}</text>
 		<text class="name">可借</text>
 	</view>
 	<view class="item">
-		<text class="num">1</text>
+		<text class="num">{{comment}}</text>
 		<text class="name">可评价</text>
 	</view>
 	<view class="item">
-		<text class="num">1</text>
+		<text class="num">{{count}}</text>
 		<text class="name">7豆</text>
 	</view>
 </view>

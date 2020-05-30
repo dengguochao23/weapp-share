@@ -92,7 +92,6 @@ Page({
   // 提交
   onSave() {
     if (this.data.name && this.data.specification) {
-      console.log('提交')
       addGood(this.data.sid,this.data.cid,this.data.name,this.data.specification,this.data.detail).then(res=>{
         wx.showToast({
           title: '提交成功',

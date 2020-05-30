@@ -1,0 +1,62 @@
+<view class="detail bg">
+	<view class="scroll" >
+		<scroll-view style="height: 100%"  scroll-y="true">
+			<view class="head">
+				<view class="status">
+					<text>{{status}}</text>
+				</view>
+				<view class="icon">
+					<van-icon size="80rpx" name="logistics" />
+				</view>
+			</view>
+			<view class="next">
+				<text class="title">下一步：{{next}}</text>
+				<text class="content">{{nextinfo}}</text>
+			</view>
+			<view class="good">
+				<van-image radius="10" width="80" height="80" src="{{logo}}" />
+				<view class="content">
+					<text>{{good.name}}/{{good.specification}}/{{good.detail}}</text>
+				</view>
+			</view>
+			<view class="user">
+				<view class="title">
+					<text>物品租借者</text>
+				</view>
+				<text class="nickname">昵称： {{good.user.nickname}}</text>
+				<text class="room">房号： {{good.user['building']}}-{{good.user['unit']}}-{{good.user['room']}}</text>
+				<view class="star">
+					<text class="name">评分： </text>
+					<van-rate size="{{12}}" readonly value="{{good.star}}" />
+				</view>
+			</view>
+			<view class="comment">
+				<view class="title">
+					<text>评论</text>
+				</view>
+				<view class="item" wx:if="{{false}}">
+					<view class="use">
+						<van-image radius="30" width="30" height="30" src="{{logo}}" />
+						<view class="name">
+							<text>dengguochao</text>
+						</view>
+					</view>
+					<view class="starAndTime">
+						<van-rate size="{{12}}" readonly value="{{ star }}" />
+						<text class="time">2020年2月2日</text>
+					</view>
+					<view class="content">
+						<text>好用好用好用好用好用好用啊啊啊好用好用好用好用好用好用啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊好用好用好用好用好用好用啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</text>
+					</view>
+				</view>
+				<view class="nothing">
+					<text>暂无评论</text>
+				</view>
+			</view>
+		</scroll-view>
+	</view>
+	<view class="buttom">
+		<van-button wx:if="{{status=='等待你的提交'||status=='撤回'}}" bind:click="onSubmitReview" data-gid="{{good.gid}}"  type="default" size="mini" round>提交申请</van-button>
+		<van-button wx:if="{{status=='提交成功'}}" bind:click="onCancalDrift" data-gid="{{good.gid}}"  type="danger" size="mini" round>撤销申请</van-button>
+	</view>
+</view>

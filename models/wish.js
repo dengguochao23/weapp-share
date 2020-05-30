@@ -1,4 +1,5 @@
 import moment from '../miniprogram_npm/moment/moment'
+moment.locale('zh-cn')
 class Wishes {
   constructor ({ time, id, name, info, sid, subsname, user, status }) {
     this.time = this.normalTime(time)
@@ -20,7 +21,6 @@ class Wishes {
   }
   normalTime (time) {
     let day = moment.unix(time)
-    moment.locale('zh-cn')
     return day.format('LL')
   }
 }

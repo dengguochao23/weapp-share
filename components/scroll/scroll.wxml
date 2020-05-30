@@ -1,4 +1,7 @@
-<scroll-view style="height:{{height}}%" refresher-threshold="60" refresher-triggered refresher-background="refresherBackground" refresher-default-style="white" scroll-y="true" refresher-enabled="{{refresherEnabled}}" bindrefresherrefresh="onRefreshDown" bindscrolltolower="onScrollDown">
-  <slot></slot>
-  <text>这是slot</text>
+<scroll-view style="height:{{height}}%" refresher-default-style="white" scroll-y="true" bindscrolltolower="onPullUp">
+	<slot></slot>
+	<my-loading wx-if="{{triggered&&more}}"></my-loading>
+	<view class="more">
+		<text wx-if="{{!more}}">没有更多的数据了</text>
+	</view>
 </scroll-view>

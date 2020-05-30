@@ -1,0 +1,77 @@
+.hot{
+  width: 100%;
+  height: 100%;
+}
+.head{
+  width: 100%;
+  height: 100px;
+  background-color: #1c92d2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 40rpx;
+  font-weight: 700;
+}
+.head .my{
+  width: 60%;
+  text-align: center;
+}
+.head .icon{
+  text-align: center;
+  width: 40%;
+}
+.title{
+  width:100%;
+  height: 30px;
+  background-color: #1c92d2;
+  color: white;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.title text:nth-child(1){
+  width: 15%;
+  padding-left: 20px;
+}
+.title text:nth-child(3){
+  width: 15%;
+}
+.title text:nth-child(2){
+  flex: 1;
+}
+.scroll{
+  position: fixed;
+  top: 130px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.scroll .item{
+  font-size: 26rpx;
+  height: 40px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.scroll .item .num{
+  text-align: center;
+  width: 15%;
+  padding-left: 20px;
+}
+.scroll .item .nickname{
+  flex: 1;
+}
+.scroll .item .nickname text{
+  margin-right: 8px;
+}
+.scroll .item .count{
+  width: 15%;
+  display: flex;
+  justify-content: space-between;
+}
+.scroll .item .count van-icon{
+  margin-right: 10px;
+}

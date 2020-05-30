@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "van-tab": "../../miniprogram_npm/@vant/weapp/tab",
+    "van-tabs": "../../miniprogram_npm/@vant/weapp/tabs",
+    "my-scroll": "../../components/scroll/scroll",
+    "van-image": "../../miniprogram_npm/@vant/weapp/image",
+    "van-icon": "../../miniprogram_npm/@vant/weapp/icon",
+    "my-nothing": "../../components/nothing/nothing"
+  },
+  "navigationBarTitleText": "我的求助"
+}

@@ -1,8 +1,8 @@
 import {
   HTTP
 } from '../util/http'
+const http = new HTTP()
 export function getWeather() {
-  const http = new HTTP()
   return http.get({
     url: 'weather',
   })

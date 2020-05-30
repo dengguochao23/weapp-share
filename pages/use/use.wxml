@@ -1,0 +1,30 @@
+<view class="use">
+	<view class="head">
+		<view>
+			<image class="background" src="{{logo}}"></image>
+		</view>
+		<view class="use">
+			<view>
+				<image mode="aspectFill" class="image" src="{{logo}}"></image>
+			</view>
+			<text class="nickname">{{user.nickname}}</text>
+			<text class="room">{{user.building}}-{{user.unit}}-{{user.room}}</text>
+		</view>
+	</view>
+	<view class="container">
+		<view class="title">
+			<van-divider contentPosition="center" customStyle="font-size: 18px;">物品</van-divider>
+		</view>
+		<view class="scroll">
+		<my-scroll  wx-if="{{goods.length>0}}" height="100" page="{{page}}" prepage="{{total}}" total="{{total}}" data="{{goods}}">
+				<view class="item" bindtap="onSelectGood" wx:key="index" wx:for="{{goods}}" wx:for-item="good" data-gid="{{good.gid}}">
+					<text class="name">{{good.name}}</text>
+					<text class="sub">{{good.subsname}}</text>
+					<van-icon name="arrow" />
+				</view>
+			</my-scroll>
+      <my-nothing wx:else></my-nothing>
+		</view>
+	</view>
+	
+</view>

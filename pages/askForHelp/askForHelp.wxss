@@ -1,0 +1,74 @@
+.ask{
+  width: 100%;
+  height: 100%;
+}
+.search{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.scroll{
+  position: fixed;
+  top: 54px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.list .item{
+  width: 95%;
+  padding-bottom: 20rpx;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+  border-radius: 10px;
+  margin:0 auto;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.list .item .head{
+  height: 80rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  border-bottom: 1px solid #DCDFE6;
+  font-size: 26rpx;
+}
+.list .item .head .user{
+  display: flex;
+  align-items: center;
+}
+.list .item .head .user text{
+  margin-left: 8px;
+  color: #1c92d2;
+}
+.list .item .container{
+  display: flex;
+  height: 110px;
+  margin: 20rpx 20rpx 0 20rpx;
+  align-items: center;
+}
+.list .item .container .content{
+  flex: 1;
+  width: 200rpx;
+  font-size: 32rpx;
+  margin-left: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.list .item .container .content .name{
+  white-space: nowrap;
+}
+.list .item .container .content .detail{
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+.list .item .bottom{
+  font-size: 26rpx;
+  margin-left: 20rpx;
+  color: #F56C6C;
+}

@@ -5,8 +5,8 @@
 			<view class="info">
 				<text class="nickname">{{nickname}}</text>
 				<view class="num">
-					<text class="item star">好评：8</text>
-					<text class="item count">7豆：18</text>
+					<text class="item star">好评：{{star}}</text>
+					<text class="item count">7豆：{{count}}</text>
 				</view>
 			</view>
 		</view>
@@ -24,3 +24,4 @@
 		</van-cell-group>
 	</view>
 </view>
+<van-toast id="van-toast" />

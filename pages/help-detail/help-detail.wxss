@@ -1,0 +1,139 @@
+.detail{
+  width: 100%;
+  height: 100%;
+}
+.scroll{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 8%;
+}
+.head{
+  width: 100%;
+  height: 80px;
+  background-color: #1c92d2;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+.head view{
+  width: 50%;
+  font-size: 40rpx;
+  text-align: center;
+}
+.next{
+  width: 100%;
+  background-color: white;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.next text{
+  height: 20px;
+  margin-left: 50px;
+  color: #909399;
+  font-size: 20rpx;
+}
+.next .title{
+  color: #E6A23C;
+  font-size: 30rpx;
+}
+.good{
+  width: 100%;
+  height: 100px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 20px;
+}
+.good .content{
+  font-size: 32rpx;
+  margin-left: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  width: 200px;
+}
+.detail .user{
+  width: 100%;
+  height: 100px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  color: #909399;
+  font-size: 24rpx;
+}
+.detail .user .title{
+  width: 100%;
+  color: #1c92d2;
+  font-size: 40rpx;
+}
+.detail .comment{
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 15px;
+  padding: 20px;
+}
+.detail .comment .title{
+  color: #1c92d2;
+  font-size: 40rpx;
+}
+.detail .comment .item{
+  display: flex;
+  min-height: 100px;
+  flex-direction: column;
+  color: black;
+  margin-top: 15px;
+}
+.detail .comment .item .use{
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+.detail .comment .item .use .name{
+  height: 40px;
+  flex: 1;
+  font-size: 24rpx;
+  line-height: 40px;
+  margin-left: 10px;
+}
+.detail .comment .item .starAndTime{
+  height: 24px;
+  display: flex;
+  font-size: 24rpx;
+  justify-content: space-between;
+}
+.detail .comment .item .content{
+  background-color: red;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  font-size: 24rpx;
+}
+.detail .comment .nothing{
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  color: #909399;
+}
+.detail .buttom{
+  height: 8%;
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 20px;
+}

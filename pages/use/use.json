@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-divider": "../../miniprogram_npm/@vant/weapp/divider",
+    "van-icon": "../../miniprogram_npm/@vant/weapp/icon",
+    "my-scroll": "../../components/scroll/scroll",
+    "my-nothing": "../../components/nothing/nothing"
+  }
+}

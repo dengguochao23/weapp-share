@@ -1,0 +1,30 @@
+<view class="comment bg">
+  <view class="title">
+    <view class="icon">
+      <van-icon size="100rpx" name="good-job-o" />
+		</view>
+    <view class="context">
+      <text>你的评论</text>
+      <text>已经完成整个流程，感谢你的评论</text>
+    </view>
+  </view>
+  <van-cell-group class="container">
+    <van-cell> 
+      <view class="rate" slot="title">
+        <view class="van-cell-text">评论</view>
+        <van-rate value="{{star}}" bind:change="onRate" />
+      </view>
+    </van-cell>
+    <van-field
+    label="你的评语"
+    value="{{comment}}"
+    placeholder="请输入你的评论"
+    border="{{ true }}"
+    type="textarea"
+    bind:change="onWriteComment"
+    autosize="true"
+    placeholder-style="color:#1c92d2"
+  />
+  </van-cell-group>
+  <van-button round  bind:click="onSave" custom-class="vanButton" color="#1c92d2" type="primary">保存</van-button>
+</view>

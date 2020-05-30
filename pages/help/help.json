@@ -1,3 +1,14 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "van-popup": "../../miniprogram_npm/@vant/weapp/popup",
+    "van-picker": "../../miniprogram_npm/@vant/weapp/picker",
+    "van-icon": "../../miniprogram_npm/@vant/weapp/icon",
+    "my-scroll": "../../components/scroll/scroll",
+    "my-nothing": "../../components/nothing/nothing",
+    "van-toast": "../../miniprogram_npm/@vant/weapp/toast/",
+    "van-radio-group": "../../miniprogram_npm/@vant/weapp/radio-group",
+    "van-cell-group": "../../miniprogram_npm/@vant/weapp/cell-group",
+    "van-cell": "../../miniprogram_npm/@vant/weapp/cell",
+    "van-radio": "../../miniprogram_npm/@vant/weapp/radio"
+  }
 }

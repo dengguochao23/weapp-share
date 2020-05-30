@@ -1,0 +1,35 @@
+.comment{
+  width: 100%;
+  height: 100%;
+}
+.comment .title{
+  width: 100%;
+  background-color: #1c92d2;
+  height: 80px;
+  color: white;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+.comment .title .icon{
+  width: 30%;
+  text-align: center;
+}
+.comment .title .context{
+  display: flex;
+  flex-direction: column;
+}
+.comment .title .context text:nth-child(2){
+  font-size: 22rpx;
+  color: #F56C6C;
+}
+.rate{
+  display: flex;
+}
+.van-cell-text{
+  margin-right: 56px;
+}
+.vanButton{
+  margin: 50rpx 10%;
+  width: 80%;
+}
