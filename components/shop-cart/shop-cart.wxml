@@ -1,0 +1,8 @@
+<view class="shop-cart ">
+  <view class="icon">
+    <van-icon custom-class="van" name="shopping-cart-o" size="40px" color="#1c92d2"/>
+  </view>
+  <view class="total">
+    <text>￥8元</text>
+  </view>
+</view>

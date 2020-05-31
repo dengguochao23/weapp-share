@@ -1,4 +1,5 @@
 <!--pages/shop/shop.wxml-->
 <view class="shop">
 	<my-shop-scroll data="{{shops}}"></my-shop-scroll>
+	<my-shop-cart></my-shop-cart>
 </view>

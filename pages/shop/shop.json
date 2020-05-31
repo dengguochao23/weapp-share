@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "my-shop-scroll": "../../components/shop-scroll/shop-scroll"
+    "my-shop-scroll": "../../components/shop-scroll/shop-scroll",
+    "my-shop-cart": "../../components/shop-cart/shop-cart"
   },
   "navigationBarTitleText": "我的商城"
 }
