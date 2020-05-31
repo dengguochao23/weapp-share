@@ -102,15 +102,9 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/hot/hot",
-					"pathName": "pages/hot/hot",
+					"name": "pages/shop/shop",
+					"pathName": "pages/shop/shop",
 					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/use/use",
-					"pathName": "pages/use/use",
 					"scene": null
 				}
 			]

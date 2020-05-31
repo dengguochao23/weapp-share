@@ -122,6 +122,8 @@ Page({
     })
   },
   onShop(){
-    console.log('商城')
+    wx.navigateTo({
+      url: '/pages/shop/shop',
+    })
   }
 })

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "my-shop-scroll": "../../components/shop-scroll/shop-scroll"
+  },
+  "navigationBarTitleText": "我的商城"
+}

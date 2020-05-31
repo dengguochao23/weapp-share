@@ -16,7 +16,8 @@
     "pages/comment/comment",
     "pages/myHelp/myHelp",
     "pages/hot/hot",
-    "pages/use/use"
+    "pages/use/use",
+    "pages/shop/shop"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -9,7 +9,7 @@ Component({
     },
     refresherEnabled: {
       type: Boolean,
-      value: false
+      value: true
     },
     refresherBackground: {
       type: String,
@@ -17,10 +17,10 @@ Component({
     },
     data: {
       type: Array,
-      observer: function(newVal,oldVal){
-        if (newVal.length == this.properties.total){
+      observer: function (newVal, oldVal) {
+        if (newVal.length == this.properties.total) {
           this.setData({
-            more:false
+            more: false
           })
         }
         this.onRefreshabort()
@@ -31,21 +31,21 @@ Component({
     },
     page: {
       type: Number,
-      observer: function(newVal){
-        if (newVal*this.properties.prepage>=this.properties.total){
+      observer: function (newVal) {
+        if (newVal * this.properties.prepage >= this.properties.total) {
           this.setData({
-            more:false
+            more: false
           })
         }
       }
     },
     // 每页的个数
-    prepage:{
+    prepage: {
       type: Number,
-      observer: function(newVal){
-        if (this.properties.prepage>=this.properties.total){
+      observer: function (newVal) {
+        if (this.properties.prepage >= this.properties.total) {
           this.setData({
-            more:false
+            more: false
           })
         }
       }
@@ -72,17 +72,18 @@ Component({
     },
     // 上来刷新开始
     onPullUp(event) {
-      if (this.data.triggered) {
-        return
+      if (this.data.refresherEnabled) {
+        if (this.data.triggered) {
+          return
+        }
+        if (this.data.data.length == this.properties.total) {
+          return
+        }
+        this.triggerEvent('onPullUp')
+        this.setData({
+          triggered: true
+        })
       }
-      if(this.data.data.length == this.properties.total){
-        return
-      }
-      this.triggerEvent('onPullUp')
-      this.setData({
-        triggered: true
-      })
-      console.log('scrollDowm')
     }
   }
 })

@@ -1,0 +1,45 @@
+<view class="shop-scroll-wrapper">
+	<view>
+		<van-sidebar active-key="{{ activeKey }}" bind:change="onChange">
+			<van-sidebar-item title="蔬菜" />
+			<van-sidebar-item title="水果" />
+		</van-sidebar>
+	</view>
+
+	<view class="list">
+		<scroll-view style="height:{{height}}px" scroll-y="true" scroll-with-animation="true" scroll-top="{{scrollTop}}" bindscroll="onScroll">
+			<view id="veg">蔬菜</view>
+			<view wx:for="{{normalTool.tool(data, 1)}}" class="item" wx:key="unique" wx:for-item="item">
+				<van-image class="img" width="80" height="80"  src="{{item.image}}" />
+				<view class="content">
+					<text>物品： {{item.name}}</text>
+					<text>价格： {{item.price}}</text>
+				</view>
+			</view>
+			<view id="fru">水果</view>
+			<view wx:for="{{normalTool.tool(data, 2)}}" class="item" wx:key="unique" wx:for-item="item">
+				<van-image class="img" width="80" height="80"  src="{{item.image}}" />
+				<view class="content">
+					<text>物品： {{item.name}}</text>
+					<text>价格： {{item.price}}</text>
+				</view>
+			</view>
+		</scroll-view>
+	</view>
+</view>
+
+<wxs module="normalTool">
+	var tool = function (data, type) {
+		var temp = []
+		for (var i = 0; i < data.length; i++) {
+			var d = data[i]
+			if (d.type === type) {
+				temp.push(d)
+			}
+		}
+		return temp
+	}
+	module.exports = {
+		tool: tool,
+	}
+</wxs>
