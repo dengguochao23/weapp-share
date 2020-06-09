@@ -4,6 +4,8 @@
     "van-sidebar": "../../miniprogram_npm/@vant/weapp/sidebar",
     "van-sidebar-item": "../../miniprogram_npm/@vant/weapp/sidebar-item",
     "my-scroll": "../scroll/scroll",
-    "van-image": "../../miniprogram_npm/@vant/weapp/image"
+    "van-image": "../../miniprogram_npm/@vant/weapp/image",
+    "van-icon":"../../miniprogram_npm/@vant/weapp/icon",
+    "cart-control": "../../components/cart-control/cart-control"
   }
 }

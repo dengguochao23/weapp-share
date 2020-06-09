@@ -1,6 +1,9 @@
 {
   "component": true,
   "usingComponents": {
-    "van-icon":"../../miniprogram_npm/@vant/weapp/icon"
+    "van-icon":"../../miniprogram_npm/@vant/weapp/icon",
+    "van-button": "../../miniprogram_npm/@vant/weapp/button",
+    "my-shop-list": "../../components/shop-list/shop-list",
+    "van-overlay": "../../miniprogram_npm/@vant/weapp/overlay"
   }
 }

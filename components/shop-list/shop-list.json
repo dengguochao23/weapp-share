@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-checkbox": "../../miniprogram_npm/@vant/weapp/checkbox",
+    "van-checkbox-group": "../../miniprogram_npm/@vant/weapp/checkbox-group",
+    "van-icon": "../../miniprogram_npm/@vant/weapp/icon",
+    "cart-control": "../../components/cart-control/cart-control"
+  }
+}

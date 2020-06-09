@@ -1,8 +1,71 @@
 <view class="shop-cart ">
-  <view class="icon">
-    <van-icon custom-class="van" name="shopping-cart-o" size="40px" color="#1c92d2"/>
-  </view>
-  <view class="total">
-    <text>￥8元</text>
-  </view>
+	<view class="container">
+		<view class="wrapper"></view>
+		<view class="icon" bindtap="showCartList">
+			<van-icon custom-class="van" name="shopping-cart-o" wx:if="{{shopCart.length>0}}" size="40px" color="#1c92d2" info="{{computed.num(shopCart,result)}}" />
+			<van-icon custom-class="van" name="shopping-cart-o" wx:else size="40px" color="#1c92d2" />
+		</view>
+		<view class="total">
+			<text>￥{{computed.price(shopCart, result)}}元</text>
+		</view>
+		<view class="but">
+			<van-button round type="info" size="small" color="#1c92d2" bindtap="onSubmit">提交订单</van-button>
+		</view>
+		<view class="list">
+			<my-shop-list visable="{{visable}}" result="{{result}}" shopCart="{{shopCart}}" bind:add="onAdd" bind:less="onLess" bind:clearShopCart="onClearShopCart" bind:changeCheckBox="onChangeCheckbox" bind:selectAll="onSelectAll"></my-shop-list>
+		</view>
+	</view>
+	<van-overlay show="{{visable}}" bind:click="showCartList" />
 </view>
+<wxs module="computed">
+	var num = function(cart, result) {
+		var checkbookResult = parseIntForResult(result)
+		var currentCart = collectCart(cart, checkbookResult)
+		var num = 0
+		for (var i = 0; i < currentCart.length; i++) {
+			var shop = currentCart[i]
+			num += shop.num
+		}
+		return num
+	}
+	var price = function(cart, result) {
+		var checkbookResult = parseIntForResult(result)
+		var currentCart = collectCart(cart, checkbookResult)
+		var total = 0
+		for (var i = 0; i < currentCart.length; i++) {
+			var shop = currentCart[i]
+			total += shop.num * shop.price
+		}
+		return total
+	}
+
+	function collectCart(cart, result) {
+		if (cart.length === result.length) {
+			return cart
+		} else {
+			var temp = []
+			for (var i = 0; i < cart.length; i++) {
+				var c = cart[i]
+				for (var j = 0; j < result.length; j++) {
+					if (c.id === result[j]) {
+						temp.push(c)
+					}
+				}
+			}
+			return temp
+		}
+	}
+
+	function parseIntForResult(result) {
+		var temp = []
+		for (var i = 0; i < result.length; i++) {
+			var r = result[i]
+			temp.push(parseInt(r))
+		}
+		return temp
+	}
+	module.exports = {
+		num: num,
+		price: price
+	}
+</wxs>

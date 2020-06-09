@@ -1,27 +1,30 @@
 <view class="shop-scroll-wrapper">
 	<view>
 		<van-sidebar active-key="{{ activeKey }}" bind:change="onChange">
-			<van-sidebar-item title="蔬菜" />
-			<van-sidebar-item title="水果" />
+			<van-sidebar-item custom-class="sidebar" title="蔬菜" />
+			<van-sidebar-item custom-class="sidebar" title="水果" />
 		</van-sidebar>
 	</view>
-
 	<view class="list">
 		<scroll-view style="height:{{height}}px" scroll-y="true" scroll-with-animation="true" scroll-top="{{scrollTop}}" bindscroll="onScroll">
 			<view id="veg">蔬菜</view>
 			<view wx:for="{{normalTool.tool(data, 1)}}" class="item" wx:key="unique" wx:for-item="item">
-				<van-image class="img" width="80" height="80"  src="{{item.image}}" />
+				<van-image class="img" width="80" height="80" src="{{item.image}}" />
 				<view class="content">
 					<text>物品： {{item.name}}</text>
 					<text>价格： {{item.price}}</text>
+					<text>库存： {{item.stock}}</text>
+					<cart-control bind:less="onLess" bind:add="onAdd" data-shop="{{item}}" num="{{normalTool.shopCartComputeNum(shopCart, item.id)}}"></cart-control>
 				</view>
 			</view>
 			<view id="fru">水果</view>
 			<view wx:for="{{normalTool.tool(data, 2)}}" class="item" wx:key="unique" wx:for-item="item">
-				<van-image class="img" width="80" height="80"  src="{{item.image}}" />
+				<van-image class="img" width="80" height="80" src="{{item.image}}" />
 				<view class="content">
 					<text>物品： {{item.name}}</text>
 					<text>价格： {{item.price}}</text>
+					<text>库存： {{item.stock}}</text>
+					<cart-control bind:less="onLess" bind:add="onAdd" num="{{normalTool.shopCartComputeNum(shopCart, item.id)}}" data-shop="{{item}}"></cart-control>
 				</view>
 			</view>
 		</scroll-view>
@@ -29,7 +32,7 @@
 </view>
 
 <wxs module="normalTool">
-	var tool = function (data, type) {
+	var tool = function(data, type) {
 		var temp = []
 		for (var i = 0; i < data.length; i++) {
 			var d = data[i]
@@ -39,7 +42,19 @@
 		}
 		return temp
 	}
+	var shopCartComputeNum = function(shopCart, id) {
+		var num = 0
+		for (var i = 0; i < shopCart.length; i++) {
+			var currentCart = shopCart[i]
+			if (id === currentCart.id) {
+				num = currentCart.num
+				break
+			}
+		}
+		return num
+	}
 	module.exports = {
 		tool: tool,
+		shopCartComputeNum: shopCartComputeNum
 	}
 </wxs>

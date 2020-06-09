@@ -5,7 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    shops: ''
+    shops: '',
+    shopCart: [],
+    // 用来存储checkbox里面的物品的名称
+    result: []
   },
 
   /**
@@ -58,6 +61,49 @@ Page({
           shops: data
         })
       })
+    })
+  },
+  addShop (event) {
+    let shop = {
+      'id': event.detail.id,
+      'name': event.detail.name,
+      'price': event.detail.price,
+      'num': 1
+    }
+    let cart = this.data.shopCart
+    let sameofshopforIndex = cart.findIndex((s)=>{
+      return s.id === shop.id
+    })
+    if (sameofshopforIndex>=0){
+      let current = cart[sameofshopforIndex]
+      let num = current.num+1
+      current.num = num
+    }else{
+      cart.push(shop)
+    }
+    this.setData({
+      shopCart: cart
+    })
+  },
+  lessShop (event) {
+    let shop = event.detail
+    let cart = this.data.shopCart
+    let sameofshopforIndex = cart.findIndex((s)=>{
+      return s.id === shop.id
+    })
+    let current = cart[sameofshopforIndex]
+    let num = current.num-1
+    current.num = num
+    if (num<1){
+      cart.splice(sameofshopforIndex, 1)
+    }
+    this.setData({
+      shopCart: cart
+    })
+  },
+  onClearShopCart () {
+    this.setData({
+      shopCart: []
     })
   }
 })

@@ -1,0 +1,5 @@
+<view class="cart-control">
+	<van-icon custom-class="icon" wx:if="{{num>0}}" color="white" name="close" catchtap="onLess" size="32rpx" />
+		<text class="num" wx:if="{{num>0}}">{{num}}</text>
+	<van-icon custom-class="icon" color="white" name="add-o" catchtap="onAdd" size="32rpx" />
+</view>

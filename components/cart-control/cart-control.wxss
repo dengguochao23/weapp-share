@@ -1,0 +1,13 @@
+.cart-control{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 40rpx;
+}
+.icon{
+  background-color:#1c92d2 ;
+  border-radius: 50%;
+}
+.num{
+  margin: 0 5px 0 5px
+}

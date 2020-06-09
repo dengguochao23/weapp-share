@@ -9,7 +9,13 @@ Component({
     },
     height: {
       type: Number
+    },
+    shopCart: {
+      type: Array
     }
+  },
+  options: {
+    styleIsolation: 'shared',
   },
   lifetimes: {
     attached() {
@@ -36,21 +42,19 @@ Component({
   methods: {
     onScroll(event) {
       let current = event.detail.scrollTop
-
       if (this.data.saveTop.length === 0) {
         const scrollArray = ['#veg', '#fru']
         let temp = this.collectScroll(scrollArray)
-        console.log(this.data.saveTop)
         this.setData({
           saveTop: temp
         })
       }
-      if (current < this.data.saveTop[1] && current >= this.data.saveTop[0]) {
+      if (0<current && current<this.data.saveTop[1]){
         this.setData({
           activeKey: 0
         })
       }
-      if (current >= this.data.saveTop[1]) {
+      if (this.data.height-this.data.saveTop[1]<current) {
         this.setData({
           activeKey: 1
         })
@@ -80,6 +84,14 @@ Component({
         })
       })
       return temp
+    },
+    onAdd (event) {
+      let shop = event.currentTarget.dataset.shop
+      this.triggerEvent('add', shop)
+    },
+    onLess (event) {
+      let shop = event.currentTarget.dataset.shop
+      this.triggerEvent('less', shop)
     }
   }
 })
