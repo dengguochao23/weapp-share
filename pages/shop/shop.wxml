@@ -1,5 +1,6 @@
 <!--pages/shop/shop.wxml-->
 <view class="shop">
 	<my-shop-scroll data="{{shops}}" shopCart="{{shopCart}}" bind:less="lessShop" bind:add="addShop"></my-shop-scroll>
-	<my-shop-cart class="shopCart" bind:clearShopCart="onClearShopCart" shopCart="{{shopCart}}" bind:add="addShop" bind:less="lessShop"></my-shop-cart>
+	<my-shop-cart class="shopCart" bind:clearShopCart="onClearShopCart" shopCart="{{shopCart}}" bind:add="addShop" bind:less="lessShop" bind:click="onClick"></my-shop-cart>
+	<van-dialog id="van-dialog" />
 </view>

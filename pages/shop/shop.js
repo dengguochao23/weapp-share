@@ -1,56 +1,14 @@
 import { getAllShop } from '../../api/shop'
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog'
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     shops: '',
     shopCart: [],
     // 用来存储checkbox里面的物品的名称
     result: []
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     this._getALLShop(1)
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    document.body.clientHeight
   },
   _getALLShop (type) {
     getAllShop (type).then(res=>{
@@ -102,8 +60,16 @@ Page({
     })
   },
   onClearShopCart () {
-    this.setData({
-      shopCart: []
+    Dialog.confirm({
+      title: '注意',
+      message: '你确定要清空你的购物车吗？',
+    }).then(() => {
+      this.setData({
+        shopCart: []
+      })
     })
+  },
+  onClick () {
+    
   }
 })

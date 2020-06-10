@@ -5,7 +5,7 @@
 			<van-icon custom-class="van" name="shopping-cart-o" wx:if="{{shopCart.length>0}}" size="40px" color="#1c92d2" info="{{computed.num(shopCart,result)}}" />
 			<van-icon custom-class="van" name="shopping-cart-o" wx:else size="40px" color="#1c92d2" />
 		</view>
-		<view class="total">
+		<view class="total" bindtap="onClick">
 			<text>￥{{computed.price(shopCart, result)}}元</text>
 		</view>
 		<view class="but">

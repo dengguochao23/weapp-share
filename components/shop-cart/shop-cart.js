@@ -93,6 +93,9 @@ Component({
           result: []
         })
       }
+    },
+    onClick () {
+      this.triggerEvent('click')
     }
   }
 })
