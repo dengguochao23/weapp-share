@@ -1,14 +1,26 @@
-import { getAllShop } from '../../api/shop'
+import { getAllShop, sellMyShop } from '../../api/shop'
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog'
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
+import { getUserDetail }from '../../api/user'
 Page({
   data: {
     shops: '',
+    // 7豆
+    count: 0,
     shopCart: [],
     // 用来存储checkbox里面的物品的名称
     result: []
   },
   onLoad: function (options) {
     this._getALLShop(1)
+    this._getUserDetail()
+  },
+  _getUserDetail () {
+    getUserDetail().then(res=>{
+      this.setData({
+        count: res.count
+      })
+    })
   },
   _getALLShop (type) {
     getAllShop (type).then(res=>{
@@ -69,7 +81,12 @@ Page({
       })
     })
   },
-  onClick () {
-    
+  onSubmit(event){
+    let shopCart = event.detail
+    sellMyShop(shopCart).then(res=>{
+      Toast.success('提交成功')
+    }).catch((e)=>{
+      Toast.fail('你不够7豆')
+    })
   }
 })

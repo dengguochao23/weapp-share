@@ -12,7 +12,7 @@
 			<van-button round type="info" size="small" color="#1c92d2" bindtap="onSubmit">提交订单</van-button>
 		</view>
 		<view class="list">
-			<my-shop-list visable="{{visable}}" result="{{result}}" shopCart="{{shopCart}}" bind:add="onAdd" bind:less="onLess" bind:clearShopCart="onClearShopCart" bind:changeCheckBox="onChangeCheckbox" bind:selectAll="onSelectAll"></my-shop-list>
+			<my-shop-list visable="{{visable}}" count="{{count}}" result="{{result}}" shopCart="{{shopCart}}" bind:add="onAdd" bind:less="onLess" bind:clearShopCart="onClearShopCart" bind:changeCheckBox="onChangeCheckbox" bind:selectAll="onSelectAll"></my-shop-list>
 		</view>
 	</view>
 	<van-overlay show="{{visable}}" bind:click="showCartList" />

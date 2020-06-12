@@ -1,5 +1,8 @@
 Component({
   properties: {
+    count: {
+      type: Number
+    },
     visable: {
       type: Boolean,
       observer () {

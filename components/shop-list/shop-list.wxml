@@ -1,7 +1,7 @@
 <view class="list" wx:if="{{isShowList}}">
 	<view class="container">
 		<view class="my">
-			<text>你目前还能用的7豆有10个</text>
+			<text>你目前还能用的7豆有{{count}}个</text>
 		</view>
 		<view class="select" wx:if="{{shopCart.length>0}}">
 			<van-checkbox value="{{ allSelect }}" bind:change="onSelectAll">全选(已选1件，共0.5kg）</van-checkbox>

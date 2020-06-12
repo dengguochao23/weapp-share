@@ -2,35 +2,20 @@
 import { getMyGood,handleGood } from '../../api/good'
 import { createGoods } from '../../models/good'
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     goods: [],
     page: 1, //当前的第几页
     pages: 1,
     total: 1
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
   },
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
     this.setData({
       goods: []
     })
     this._getMyGoods(1)
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
   onHide: function () {
   },
   // 路由

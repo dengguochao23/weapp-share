@@ -1,4 +1,3 @@
-<!--pages/main/main.wxml-->
 <view class="main bg">
 	<view class="card">
 		<my-card room="{{room}}" nickname="{{nickname}}" logo="{{logo}}" bind:gotUserInfo="onGetUserInfo"></my-card>

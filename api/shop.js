@@ -7,3 +7,11 @@ export function getAllShop(type) {
     url: `shop/type=${type}`
   })
 }
+export function sellMyShop(data) {
+  return http.post({
+    url: 'shop/sell',
+    data: {
+      'res' :data
+    }
+  })
+}

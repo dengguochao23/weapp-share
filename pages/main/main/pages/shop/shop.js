@@ -1,4 +1,4 @@
-// pages/myHelp/myHelp.js
+// pages/main/main/pages/shop/shop.js
 Page({
 
   /**

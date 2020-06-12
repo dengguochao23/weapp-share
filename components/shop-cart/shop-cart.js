@@ -5,6 +5,9 @@ Component({
       observer () {
         this.initRestult(this.properties.shopCart)
       }
+    },
+    count: {
+      type: Number
     }
   },
   data: {
@@ -67,6 +70,7 @@ Component({
           }
         }
       })
+      this.triggerEvent('submit', temp)
     },
     parsetIntForResult (result) {
       let temp=[]

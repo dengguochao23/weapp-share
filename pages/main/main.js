@@ -46,9 +46,6 @@ Page({
       this.onWeather()
     })
   },
-  onReady: function () {},
-  onShow: function () {
-  },
   onGetUserInfo(event) {
     this._login()
   },
@@ -80,6 +77,7 @@ Page({
       }
     })
   },
+  // 获取用户详情
   _getUserDetail() {
     Toast.loading({
       mask: true,
@@ -98,6 +96,7 @@ Page({
       Toast.clear();
     })
   },
+  // 天气
   onWeather() {
     getWeather().then((res) => {
       this.setData({

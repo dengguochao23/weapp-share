@@ -1,24 +1,56 @@
 {
   "pages": [
     "pages/main/main",
-    "pages/help/help",
     "pages/my/my",
-    "pages/mobile/mobile",
-    "pages/email/email",
-    "pages/room/room",
-    "pages/myGoods/myGoods",
-    "pages/addGood/addGood",
-    "pages/myWish/myWish",
-    "pages/addWish/addWish",
-    "pages/askForHelp/askForHelp",
-    "pages/help-detail/help-detail",
-    "pages/drift/drift",
-    "pages/comment/comment",
-    "pages/myHelp/myHelp",
-    "pages/hot/hot",
-    "pages/use/use",
-    "pages/shop/shop"
+    "pages/drift/drift"
   ],
+  "subpackages":[
+    {
+      "root": "pages/main/main",
+      "name": "main",
+      "pages": [
+        "pages/help/help",
+        "pages/hot/hot",
+        "pages/shop/shop",
+        "pages/askForHelp/askForHelp",
+        "pages/use/use"
+      ]
+    },
+    {
+      "root": "pages/my/my",
+      "name": "my",
+      "pages": [
+        "pages/room/room",
+        "pages/mobile/mobile",
+        "pages/email/email",
+        "pages/addGood/addGood",
+        "pages/addWish/addWish",
+        "pages/myWish/myWish",
+        "pages/myGoods/myGoods"
+      ]
+    },
+    {
+      "root": "pages/drift/drift",
+      "name": "drift",
+      "pages": [
+        "pages/comment/comment"
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/main/main": {
+      "network": "all",
+      "packages": ["main"]
+    },
+    "pages/my/my": {
+      "network": "all",
+      "packages": ["my"]
+    },
+    "pages/drift/drift": {
+      "network": "all",
+      "packages": ["drift"]
+    }
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#1c92d2",

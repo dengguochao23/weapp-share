@@ -6,10 +6,6 @@ import {
 } from '../../models/good'
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     value: '',
     goods: [],
@@ -17,11 +13,6 @@ Page({
     pages: 10,
     total: 10
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {},
   onShow: function () {
     this.setData({
       goods: [],

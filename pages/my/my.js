@@ -4,10 +4,6 @@ import { getAllSubs } from '../../util/getSubs'
 import { getContents} from '../../api/good'
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     logo: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
     room: '0-0-0',
@@ -18,10 +14,6 @@ Page({
     goods: 0,
     wish: 0
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
       // 获取subs列表并放在缓存中
     getAllSubs()
@@ -43,36 +35,12 @@ Page({
       this._getUserDetail()
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
     Toast.loading({
       mask: true,
       message: '加载中...'
     })
     this._getUserDetail()
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
   },
   // 各种路由
   onMobile() {
