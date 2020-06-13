@@ -6,7 +6,7 @@
   ],
   "subpackages":[
     {
-      "root": "pages/main/main",
+      "root": "mainpages",
       "name": "main",
       "pages": [
         "pages/help/help",
@@ -17,7 +17,7 @@
       ]
     },
     {
-      "root": "pages/my/my",
+      "root": "mypages",
       "name": "my",
       "pages": [
         "pages/room/room",
@@ -30,7 +30,7 @@
       ]
     },
     {
-      "root": "pages/drift/drift",
+      "root": "driftpages",
       "name": "drift",
       "pages": [
         "pages/comment/comment"

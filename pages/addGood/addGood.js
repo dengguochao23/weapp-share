@@ -1,9 +1,6 @@
 const subs = wx.getStorageSync('subs')
 import { addGood } from '../../api/good'
 Page({
-  /**
-   * 页面的初始数据
-   */
   data: {
     columns: [{
         values: Object.keys(subs),

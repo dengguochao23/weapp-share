@@ -1,6 +1,5 @@
 import {_getUserInfo} from '../../util/getUser'
 import { getUserDetail }from '../../api/user'
-import { getAllSubs } from '../../util/getSubs'
 import { getContents} from '../../api/good'
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
 Page({
@@ -15,8 +14,6 @@ Page({
     wish: 0
   },
   onLoad: function (options) {
-      // 获取subs列表并放在缓存中
-    getAllSubs()
     // 获取content类别并放在缓存中
     getContents().then(res=>{
       wx.setStorageSync('content', res)
