@@ -14,6 +14,10 @@ import {
   _getUserInfo
 } from '../../util/getUser'
 import {
+  _getLocation
+} from '../../util/getLocation'
+import { geocoder } from '../../util/map'
+import {
   getUserDetail,
   saveUserByNickname,
   saveUserByImage
@@ -30,7 +34,9 @@ Page({
     goods: 0,
     wishes: 0,
     comment: 0,
-    count: 0
+    count: 0,
+    city: '中国',
+    province: '中国'
   },
   onLoad: function (options) {
     _getUserInfo().then(res => {
@@ -42,8 +48,12 @@ Page({
       })
     }).then(res => {
       this._getUserDetail()
-    }).then(res=>{
-      this.onWeather()
+    })
+    _getLocation().then(res=>{
+      this._getMyLocation()
+    }).catch((rej)=>{
+      console.log(rej)
+      this._getMyLocation()
     })
   },
   onGetUserInfo(event) {
@@ -97,11 +107,46 @@ Page({
     })
   },
   // 天气
-  onWeather() {
-    getWeather().then((res) => {
+  _getWeather(province, city) {
+    getWeather(province, city).then((res) => {
+      let t = {
+        'province': province,
+        'city':city,
+        'air': res.air,
+        'temp': res.temp
+      }
       this.setData({
-        temp: creatWeather(res)
+        temp: creatWeather(t)
       })
+    })
+  },
+  // 读取地图地址
+  _getMyLocation() {
+    wx.getLocation({
+      type: 'gcj02',
+      success: this.updateLoacation
+    })
+  },
+  updateLoacation(res) {
+    const latitude = res.latitude
+    const longitude = res.longitude
+    const speed = res.speed
+    const accuracy = res.accuracy
+    wx.showLoading({
+      title: '定位中',
+      mask: true
+    })
+    geocoder(latitude, longitude).then(res=>{
+      wx.hideLoading({
+        complete: (res) => {},
+      })
+      let city = res.ad_info.city
+      let province = res.ad_info.province
+      this.setData({
+        province,
+        city
+      })
+      this._getWeather(province, city)
     })
   },
   // 各种路由
@@ -123,6 +168,15 @@ Page({
   onShop(){
     wx.navigateTo({
       url: '/pages/shop/shop',
+    })
+  },
+  onWeather() {
+    const that = this
+    wx.navigateTo({
+      url: '/pages/weather/weather',
+      success(res){
+        res.eventChannel.emit('sendTempFormMain', { data: that.data.temp})
+      }
     })
   }
 })

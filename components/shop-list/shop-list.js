@@ -84,7 +84,6 @@ Component({
               isShowList: this.properties.visable
             })
             this.clearAnimation('.list', function () {
-              console.log("清除了.block上的所有动画属性")
             })
           }.bind(this))
         }, 50)

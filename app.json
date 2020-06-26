@@ -4,7 +4,7 @@
     "pages/my/my",
     "pages/drift/drift"
   ],
-  "subpackages":[
+  "subpackages": [
     {
       "root": "mainpages",
       "name": "main",
@@ -13,7 +13,8 @@
         "pages/hot/hot",
         "pages/shop/shop",
         "pages/askForHelp/askForHelp",
-        "pages/use/use"
+        "pages/use/use",
+        "pages/weather/weather"
       ]
     },
     {
@@ -40,15 +41,21 @@
   "preloadRule": {
     "pages/main/main": {
       "network": "all",
-      "packages": ["main"]
+      "packages": [
+        "main"
+      ]
     },
     "pages/my/my": {
       "network": "all",
-      "packages": ["my"]
+      "packages": [
+        "my"
+      ]
     },
     "pages/drift/drift": {
       "network": "all",
-      "packages": ["drift"]
+      "packages": [
+        "drift"
+      ]
     }
   },
   "window": {
@@ -87,5 +94,11 @@
     "van-button": "./miniprogram_npm/@vant/weapp/button",
     "van-toast": "./miniprogram_npm/@vant/weapp/toast"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "requiredBackgroundModes": ["location"],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序获取当地天气"
+    }
+  }
 }

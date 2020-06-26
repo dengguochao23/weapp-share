@@ -1,0 +1,4 @@
+<view class="roll">
+	<text class="pre">{{pre}}</text>
+	<text class="next">{{next}}</text>
+</view>

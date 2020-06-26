@@ -1,0 +1,104 @@
+<view class="weather">
+	<view class="wrapper">
+		<canvas type="2d" id="effect"></canvas>
+		<view class="weather-bg {{tool.bg()}}">
+		</view>
+		<view class="location" bindtap="onClick">
+			<van-icon color="white" name="location-o" />
+			<text>{{air.province}},{{air.city}}</text>
+		</view>
+		<view class="template">
+			<text class="num">{{air.degree}}°</text>
+			<view class="weather_short">
+				<text>{{air.weather}}</text>
+				<text class="iconfont icon-{{tool.icon(air.weather)}}"></text>
+			</view>
+			<view class="air">
+				<my-roll class="roll" air="{{air}}"></my-roll>
+			</view>
+		</view>
+		<view class="scape">
+			<image style="width: 750rpx;" src="{{tool.time()}}" mode="widthFix"></image>
+		</view>
+	</view>
+</view>
+
+<wxs module="tool">
+	var icon = function(weather) {
+		var iconname = ''
+		switch (weather) {
+			case '多云':
+				iconname = 'duoyun'
+				break;
+			case '暴雨':
+				iconname = 'baoyu'
+				break;
+			case '大雨':
+				iconname = 'dayu'
+				break;
+			case '大雪':
+				iconname = 'daxue'
+				break;
+			case '浮尘':
+				iconname = 'fuchen'
+				break;
+			case '雷阵雨':
+				iconname = 'leizhenyu'
+				break;
+			case '霾':
+				iconname = 'mai'
+				break;
+			case '强沙尘暴':
+				iconname = 'qiangshachenbao'
+				break;
+			case '晴':
+				iconname = 'qing'
+				break;
+			case '雾':
+				iconname = 'wu'
+				break;
+			case '小雨':
+				iconname = 'xiaoyu'
+				break;
+			case '特大暴雨':
+				iconname = 'tedabaoyu'
+				break;
+			case '严重霾':
+				iconname = 'yanzhongmai'
+				break;
+			case '阵雨':
+				iconname = 'zhenyu'
+				break;
+			case '中雨':
+				iconname = 'zhongyu'
+				break;
+			default:
+				iconname = 'yin';
+				break;
+		}
+		return iconname
+	}
+	var time = function() {
+		var date = getDate()
+		var hour = date.getHours()
+		if (hour < 19) {
+			return '../../image/bg/tianqi_bg.png'
+		} else {
+			return '../../image/bg/tianqi_bg_night.png'
+		}
+	}
+	var bg = function() {
+		var date = getDate()
+		var hour = date.getHours()
+		if (hour < 19) {
+			return 'day'
+		} else {
+			return 'night'
+		}
+	}
+	module.exports = {
+		icon: icon,
+		time: time,
+		bg: bg
+	}
+</wxs>

@@ -129,7 +129,6 @@ Page({
   // 选择某个
   onSelectWish(event) {
     const {name, uid, wishid} = event.currentTarget.dataset
-    console.log(event.currentTarget.dataset)
     this.setData({
       goods: [],
       wishUid: uid,
@@ -157,7 +156,6 @@ Page({
   },
   // 提交
   onSendMyGood () {
-    console.log(this.data.wishId)
     createDriftFromSharer(this.data.wishId,this.data.gid,this.data.name,this.data.wishUid,5).then(res=>{
       Toast.success('提交成功');
       this.closePopup()

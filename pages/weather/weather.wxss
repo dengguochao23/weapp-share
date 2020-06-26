@@ -1,0 +1,97 @@
+@import '../../common/font/iconfont.wxss';
+
+.weather {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+.wrapper{
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#effect{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+}
+.weather text{
+  color: white;
+}
+.weather-bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0;
+  z-index: -1;
+}
+.day {
+  background-color: #87CEFA;
+}
+
+.night {
+  background-color: #191970;
+}
+
+.location {
+  position: absolute;
+  top: 35rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+}
+
+.template {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 22%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 30;
+}
+
+.template .num {
+  font-size: 120rpx;
+  margin-bottom: 24rpx;
+}
+
+.template .weather_short {
+  margin-bottom: 24rpx;
+}
+
+.template .weather_short text {
+  font-size: 50rpx;
+}
+
+.template .air {
+  width: 200rpx;
+  height: 30px;
+  display: block;
+  float: left;
+  overflow: hidden;
+}
+
+.template .air text {
+  display: block;
+  width: 200rpx;
+  height: 30px;
+}
+
+.scape {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  z-index: 10;
+}

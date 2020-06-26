@@ -50,7 +50,7 @@
 			</view>
 		</view>
 	</view>
-	<view class="weather">
+	<view class="weather" bindtap="onWeather">
 		<van-divider contentPosition="center" textColor="black" customStyle="font-size: 20px;border-color: #1c92d2;">天气</van-divider>
 		<my-weather temp="{{temp}}"></my-weather>
 	</view>
