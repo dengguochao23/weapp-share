@@ -1,4 +1,6 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "van-toast": "../../miniprogram_npm/@vant/weapp/toast"
+  }
 }

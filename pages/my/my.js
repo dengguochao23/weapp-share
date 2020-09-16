@@ -18,10 +18,6 @@ Page({
     getContents().then(res=>{
       wx.setStorageSync('content', res)
     })
-    Toast.loading({
-      mask: true,
-      message: '加载中...'
-    })
     _getUserInfo().then(res => {
       const nickname = res.userInfo.nickName
       const logo = res.userInfo.avatarUrl
@@ -44,11 +40,6 @@ Page({
     let data = this.data.mobile == '空'? this.data.mobile: JSON.parse(this.data.mobile)
     wx.navigateTo({
       url: '/pages/mobile/mobile',
-      events: {
-        sendMobile(data) {
-          console.log('dengguochao'+data)
-        }
-      },
       success: function (res) {
         // 通过eventChannel向被打开页面传送数据
         res.eventChannel.emit('sendMobile', data)
@@ -59,11 +50,6 @@ Page({
     let data = this.data.email
     wx.navigateTo({
       url: '/pages/email/email',
-      events: {
-        sendEmail(data) {
-          console.log('dengguochao'+data)
-        }
-      },
       success: function (res) {
         // 通过eventChannel向被打开页面传送数据
         res.eventChannel.emit('sendEmail', data)

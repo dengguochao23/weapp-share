@@ -48,7 +48,7 @@
   top: 35rpx;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 30;
+  z-index: 160;
 }
 
 .template {

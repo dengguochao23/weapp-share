@@ -85,6 +85,9 @@ Page({
     let shopCart = event.detail
     sellMyShop(shopCart).then(res=>{
       Toast.success('提交成功')
+      this.setData({
+        shopCart: []
+      })
     }).catch((e)=>{
       Toast.fail('你不够7豆')
     })

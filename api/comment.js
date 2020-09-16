@@ -12,3 +12,8 @@ export function whiteComment(gid,star,content) {
     }
   })
 }
+export function getComment(gid){
+  return http.get({
+    url: `comment/gid=${gid}`
+  })
+}

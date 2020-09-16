@@ -44,7 +44,16 @@ class HTTP {
           resolve(res.data)
         }
       },
-      fail: (erroe) => {}
+      fail: (error) => {
+        wx.showModal({
+          title: '失败',
+          content: '服务器有问题，请稍候再试',
+          showCancel: false,
+          success: (res => {
+            reject(res)
+          })
+        })
+      }
     })
   }
 }

@@ -1,7 +1,4 @@
 import {
-  HTTP
-} from '../../util/http.js'
-import {
   creatWeather
 } from '../../util/weather.js'
 import {
@@ -23,7 +20,6 @@ import {
   saveUserByImage
 } from '../../api/user'
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
-const http = new HTTP()
 Page({
   data: {
     temp: {},
@@ -51,13 +47,23 @@ Page({
     })
     _getLocation().then(res=>{
       this._getMyLocation()
-    }).catch((rej)=>{
-      console.log(rej)
+    }).catch(rej => {
       this._getMyLocation()
+    })
+    // 分享
+    wx.showShareMenu({
+      withShareTicket: true,
+      menus: ['shareAppMessage', 'shareTimeline']
     })
   },
   onGetUserInfo(event) {
     this._login()
+  },
+  onShareAppMessage() {
+    return {
+      title: '分享一个好玩的小程序给你们',
+      path: '/pages/main/main'
+    }
   },
   // 第一次登陆获取token
   _login() {
@@ -130,8 +136,6 @@ Page({
   updateLoacation(res) {
     const latitude = res.latitude
     const longitude = res.longitude
-    const speed = res.speed
-    const accuracy = res.accuracy
     wx.showLoading({
       title: '定位中',
       mask: true

@@ -48,13 +48,13 @@ Page({
   judge (ctx, weather) {
     let date = new Date()
     let hour = date.getHours()
-    if (weather==='大雨'){
+    if (weather==='大雨'||weather === '暴雨'){
       this.rain(ctx,100)
     }
     if (weather ==='中雨'){
       this.rain(ctx, 50)
     }
-    if (weather === '小雨' || weather==='阵雨') {
+    if (weather === '小雨' || weather==='阵雨' || weather === '雨') {
       this.rain(ctx, 10)
     }
     if (weather === '多云'){

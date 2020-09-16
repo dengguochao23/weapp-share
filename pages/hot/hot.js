@@ -13,15 +13,6 @@ Page({
     this._getAllUser(1)
     this._ranking()
   },
-  onReady: function () {
-
-  },
-  onShow: function () {
-
-  },
-  onHide: function () {
-
-  },
   _getAllUser(page) {
     getAllUser(page).then(res => {
       let allUser = this.data.allUser.concat(res.data)

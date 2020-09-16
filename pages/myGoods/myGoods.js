@@ -1,6 +1,8 @@
 // pages/myGoods/myGoods.js
 import { getMyGood,handleGood } from '../../api/good'
 import { createGoods } from '../../models/good'
+import { normallArray } from '../../util/normal'
+const normalGoods = normallArray(createGoods)
 Page({
   data: {
     goods: [],
@@ -8,15 +10,11 @@ Page({
     pages: 1,
     total: 1
   },
-  onLoad: function (options) {
-  },
   onShow: function () {
     this.setData({
       goods: []
     })
     this._getMyGoods(1)
-  },
-  onHide: function () {
   },
   // 路由
   onAddGood () {
@@ -26,8 +24,7 @@ Page({
   },
   _getMyGoods (page) {
     getMyGood(page).then(res=>{
-      console.log(res)
-      let good = this.normalGood(res.data)
+      let good = normalGoods(res.data)
       let goods = this.data.goods
       goods = goods.concat(good)
       this.setData({
@@ -37,13 +34,6 @@ Page({
         goods: goods
       })
     })
-  },
-  normalGood(data){
-    let t = []
-    data.forEach((i)=>{
-      t.push(createGoods(i))
-    })
-    return t
   },
   // 开始下拉刷新
   onPullUp(){

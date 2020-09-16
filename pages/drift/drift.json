@@ -5,7 +5,9 @@
     "my-scroll": "../../components/scroll/scroll",
     "van-image": "../../miniprogram_npm/@vant/weapp/image",
     "van-icon": "../../miniprogram_npm/@vant/weapp/icon",
-    "my-nothing": "../../components/nothing/nothing"
+    "my-nothing": "../../components/nothing/nothing",
+    "van-toast": "../../miniprogram_npm/@vant/weapp/toast",
+    "van-button": "../../miniprogram_npm/@vant/weapp/button"
   },
   "navigationBarTitleText": "我的求助"
 }

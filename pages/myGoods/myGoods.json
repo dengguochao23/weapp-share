@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "van-image": "../../miniprogram_npm/@vant/weapp/image",
-    "my-scroll": "../../components/scroll/scroll"
+    "my-scroll": "../../components/scroll/scroll",
+    "van-button": "../../miniprogram_npm/@vant/weapp/button"
   },
   "navigationBarTitleText": "我的物品"
 }

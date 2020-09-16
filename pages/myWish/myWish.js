@@ -4,35 +4,20 @@ import {
 import {
   createWishes
 } from "../../models/wish"
+import { normallArray} from '../../util/normal'
+const normalWishes = normallArray(createWishes)
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     wishes: [],
     page: 1, //当前的第几页
     pages: 10,
     total: 10
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  },
   onShow: function () {
     this.setData({
       wishes: []
     })
     this._getMyWish(1)
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
   },
   // 调转路由
   onAddWish() {
@@ -43,7 +28,7 @@ Page({
   //处理wish
   _getMyWish(page) {
     getMyHelp(page).then(res => {
-      let wish = this.normalWishes(res.data)
+      let wish = normalWishes(res.data)
       let wishes = this.data.wishes
       wishes = wishes.concat(wish)
       this.setData({
@@ -53,13 +38,6 @@ Page({
         wishes: wishes
       })
     })
-  },
-  normalWishes(data) {
-    let temp = []
-    data.forEach((item) => {
-      temp.push(createWishes(item))
-    })
-    return temp
   },
   // 开始下拉刷新
   onPullUp(){

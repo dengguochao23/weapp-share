@@ -1,4 +1,0 @@
-<!--components/ad/ad.wxml-->
-<view class="ad">
-  <text>点我有惊喜</text>
-</view>

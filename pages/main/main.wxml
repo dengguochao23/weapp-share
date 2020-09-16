@@ -54,11 +54,11 @@
 		<van-divider contentPosition="center" textColor="black" customStyle="font-size: 20px;border-color: #1c92d2;">天气</van-divider>
 		<my-weather temp="{{temp}}"></my-weather>
 	</view>
-	<view class="ad">
-		<my-ad></my-ad>
-	</view>
 	<view class="infro">
 		<text>使用流程</text>
+	</view>
+	<view class="share">
+		<my-share></my-share>
 	</view>
 </view>
 <van-toast id="van-toast" />

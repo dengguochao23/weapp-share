@@ -1,8 +1,5 @@
 // components/scroll/scroll.js
 Component({
-  /**
-   * 组件的属性列表
-   */
   properties: {
     height: {
       type: Number
@@ -10,10 +7,6 @@ Component({
     refresherEnabled: {
       type: Boolean,
       value: true
-    },
-    refresherBackground: {
-      type: String,
-      value: '#FFF'
     },
     data: {
       type: Array,
@@ -51,18 +44,10 @@ Component({
       }
     }
   },
-
-  /**
-   * 组件的初始数据
-   */
   data: {
     triggered: false, //false表示上拉没被触发，true表上上拉被触发
     more: true
   },
-
-  /**
-   * 组件的方法列表
-   */
   methods: {
     //上拉停止
     onRefreshabort() {

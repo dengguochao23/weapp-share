@@ -19,7 +19,13 @@ function _getUserInfo () {
         }
       },
       fail: rej => {
-        reject(rej)
+        wx.showModal({
+          title: '失败',
+          content: '无法获取个人信息',
+          showCancel: false,
+          confirmText: '知道了',
+          success: (res => {})
+        })
       }
     })
   })

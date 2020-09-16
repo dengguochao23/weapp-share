@@ -4,14 +4,27 @@ Component({
     num: {
       type: Number,
       value: 0
+    },
+    max: {
+      type: Number,
+      value: 10
     }
   },
   methods: {
     onAdd(){
-      this.setData({
-        num: this.properties.num+1
-      })
-      this.triggerEvent('add', this.properties.num)
+      let currentNum = this.properties.num+1
+      if (this.properties.max >= currentNum) {
+        this.setData({
+          num: currentNum
+        })
+        this.triggerEvent('add', this.properties.num)
+      } else {
+        wx.showModal({
+          title: '注意了',
+          content: '没那么多库存了',
+          showCancel: false
+        })
+      }
     },
     onLess(){
       if (this.properties.num===0){

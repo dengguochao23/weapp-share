@@ -2,7 +2,8 @@
   "usingComponents": {
     "my-shop-scroll": "../../components/shop-scroll/shop-scroll",
     "my-shop-cart": "../../components/shop-cart/shop-cart",
-    "van-dialog": "../../miniprogram_npm/@vant/weapp/dialog"
+    "van-dialog": "../../miniprogram_npm/@vant/weapp/dialog",
+    "van-toast": "../../miniprogram_npm/@vant/weapp/toast"
   },
   "navigationBarTitleText": "我的商城"
 }

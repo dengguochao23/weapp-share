@@ -1,0 +1,5 @@
+<view class="share">
+  <button open-type="share" class="but">
+    <van-icon name="share" custom-class="icon" color="#1c92d2"/>
+  </button>
+</view>

@@ -1,30 +1,24 @@
 <view class="shop-scroll-wrapper">
 	<view>
 		<van-sidebar active-key="{{ activeKey }}" bind:change="onChange">
-			<van-sidebar-item custom-class="sidebar" title="蔬菜" />
-			<van-sidebar-item custom-class="sidebar" title="水果" />
+			<van-sidebar-item custom-class="sidebar" title="{{name}}" wx:for="{{normalTool.type}}" wx:for-item="name" wx:key="name"/>
 		</van-sidebar>
 	</view>
 	<view class="list">
 		<scroll-view style="height:{{height}}px" scroll-y="true" scroll-with-animation="true" scroll-top="{{scrollTop}}" bindscroll="onScroll">
-			<view id="veg">蔬菜</view>
-			<view wx:for="{{normalTool.tool(data, 1)}}" class="item" wx:key="unique" wx:for-item="item">
-				<van-image class="img" width="80" height="80" src="{{item.image}}" />
-				<view class="content">
-					<text>物品： {{item.name}}</text>
-					<text>价格： {{item.price}}</text>
-					<text>库存： {{item.stock}}</text>
-					<cart-control bind:less="onLess" bind:add="onAdd" data-shop="{{item}}" num="{{normalTool.shopCartComputeNum(shopCart, item.id)}}"></cart-control>
-				</view>
-			</view>
-			<view id="fru">水果</view>
-			<view wx:for="{{normalTool.tool(data, 2)}}" class="item" wx:key="unique" wx:for-item="item">
-				<van-image class="img" width="80" height="80" src="{{item.image}}" />
-				<view class="content">
-					<text>物品： {{item.name}}</text>
-					<text>价格： {{item.price}}</text>
-					<text>库存： {{item.stock}}</text>
-					<cart-control bind:less="onLess" bind:add="onAdd" num="{{normalTool.shopCartComputeNum(shopCart, item.id)}}" data-shop="{{item}}"></cart-control>
+			<view wx:for="{{normalTool.type}}" wx:for-item="name" wx:for-index="index" wx:key="name">
+				<view id="{{normalTool.id(name)}}">{{name}}</view>
+				<view wx:for="{{normalTool.tool(data, index+1)}}" class="item" wx:key="unique" wx:for-item="item">
+					<van-image class="img" width="80" height="80" src="{{item.image}}" />
+					<view class="content">
+						<text>物品： {{item.name}}</text>
+						<text>价格： {{item.price}}</text>
+						<text>库存： {{item.stock}}</text>
+						<cart-control bind:less="onLess" bind:add="onAdd" data-shop="{{item}}" max="{{item.stock}}" num="{{normalTool.shopCartComputeNum(shopCart, item.id)}}"></cart-control>
+						<view class="null" wx-if="{{item.stock===0}}">
+							<text>没货啦</text>
+						</view>
+					</view>
 				</view>
 			</view>
 		</scroll-view>
@@ -53,8 +47,21 @@
 		}
 		return num
 	}
+	var id = function(type) {
+		switch (type) {
+			case '蔬菜':
+				return 'veg';
+				break;
+			case '水果':
+				return 'fru';
+				break;
+		}
+	}
+	var type = ['蔬菜', '水果']
 	module.exports = {
 		tool: tool,
-		shopCartComputeNum: shopCartComputeNum
+		shopCartComputeNum: shopCartComputeNum,
+		type: type,
+		id: id
 	}
 </wxs>

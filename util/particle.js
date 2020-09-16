@@ -130,6 +130,110 @@ class Star extends Particle{
   }
 }
 
+class Sunny extends Particle{
+  _init(){
+    this.interval = false
+    let width = this.width
+    // 星星的数量
+    let amount = 6
+    let ps = this.particles
+    for (let i=0;i<amount;i++){
+      let p = ''
+      if (i===1 ) {
+       p = {
+          x: width,
+          y: 0,
+          r: 70,
+          sangle: 0,
+          // 结束
+          eangle: 2*Math.PI,
+          color: 'rgba(250,250,210)'
+        }
+      }
+      if (i===0){
+        p = {
+          x: width,
+          y: 0,
+          r: 150,
+          sangle: 0,
+          // 结束
+          eangle: 2*Math.PI,
+          color: 'rgba(255, 255, 255, 0.4)'
+        }
+      }
+      if (i===2) {
+        p={
+          x: width-130,
+          y: 130,
+          r: 5,
+          sangle: 0,
+          // 结束
+          eangle: 2*Math.PI,
+          color: 'rgba(255, 255, 255, 0.4)'
+        }
+      }
+      if (i===3) {
+        p={
+          x: width-160,
+          y: 160,
+          r: 10,
+          sangle: 0,
+          // 结束
+          eangle: 2*Math.PI,
+          color: 'rgba(255, 255, 255, 0.6)'
+        }
+      }
+      if (i===4) {
+        p={
+          x: width-175,
+          y: 175,
+          r: 20,
+          sangle: 0,
+          // 结束
+          eangle: 2*Math.PI,
+          color: 'rgba(255, 255, 255, 0.3)'
+        }
+      }
+      if (i===5) {
+        p={
+          x: width-190,
+          y: 190,
+          r: 40,
+          sangle: 0,
+          // 结束
+          eangle: 2*Math.PI,
+          color: 'rgba(255, 255, 255, 0.2)'
+        }
+      }
+    ps.push(p)
+    }
+    this.particles = ps
+  }
+  _draw(){
+    let ps = this.particles
+    let ctx = this.ctx
+    // 首先清除画布上的内容
+    ctx.clearRect(0, 0 , this.width,this.height)
+    for(let i =0;i<ps.length;i++){
+      ctx.beginPath()
+      if(i===0){
+        let s = ps[i]
+        const grd = ctx.createLinearGradient(this.width, 0, this.width-150, 150)
+        grd.addColorStop(0, 'white')
+        grd.addColorStop(1, '#76C2F9')
+        ctx.fillStyle = grd
+        ctx.arc(s.x, s.y, s.r,s.sangle, s.eangle)
+        ctx.fill()
+      }else{
+        let s = ps[i]
+        ctx.arc(s.x, s.y, s.r,s.sangle, s.eangle)
+        ctx.fillStyle=s.color
+        ctx.fill()
+      }
+    }
+  }
+}
+
 class Cloud extends Particle{
   _init(){
     let width = this.width
@@ -178,36 +282,6 @@ class Cloud extends Particle{
   }
 }
 
-class Sunny extends Particle{
-  _init(){
-    let width = this.width
-    let height = this.height
-    this.particles = {
-      x: width*0.8,
-      y: height*0.1,
-      sr: height*(0.08),
-      // 开始
-      sangle: 0,
-      // 结束
-      eangle: 2*Math.PI,
-      color: 'rgba(255,255,0,1)'
-    }
-  }
-  _draw(){
-    this.interval = false
-    let ctx = this.ctx
-    let ps= this.particles
-    // 首先清除画布上的内容
-      ctx.clearRect(0, 0 , this.width,this.height)
-      ctx.beginPath()
-      ctx.fill();
-      ctx.arc(ps.x,ps.y,ps.sr,ps.sangle,ps.eangle)
-      ctx.closePath();
-      ctx.fillStyle=ps.color
-      ctx.fill();
-  }
-}
-
 class Smog extends Particle{
   _init(){
     // this.interval = false
@@ -217,7 +291,6 @@ class Smog extends Particle{
       x: width,
       y: height,
       color: 'rgba(166, 166, 166, 0.4)'
-
   }
   }
   _draw(){

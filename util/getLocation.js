@@ -21,7 +21,15 @@ function _getLocation () {
         }
       },
       fail: rej => {
-        reject(rej)
+        wx.showModal({
+          title: '失败',
+          content: '无法获取地址信息',
+          showCancel: false,
+          confirmText: '知道了',
+          success: (res => {
+            reject(res)
+          })
+        })
       }
     })
   })

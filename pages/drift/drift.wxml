@@ -8,7 +8,7 @@
 		</van-tab>
 	</van-tabs>
 	<view class="list">
-		<my-scroll wx-if="{{pending.length>0}}" height="100" page="{{page}}" prepage="4" total="{{total}}" bind:onPullUp="onPullUp" data="{{goods}}">
+		<my-scroll wx-if="{{pending.length>0}}" height="100" page="{{page}}" prepage="4" total="{{total}}" bind:onPullUp="onPullUp" data="{{pending}}">
 			<view class="item" wx:for="{{pending}}" wx:key="idx" wx:for-index="idx" wx:for-item="good">
 				<view class="head">
 					<view class="user">
@@ -25,10 +25,9 @@
 				</view>
 				<view class="bottom">
 					<text>{{good.time}}</text>
-					<van-button wx-if="{{good.req=='等待对方审核'}}" data-id="{{good.id}}" data-youare="{{good.youare}}" data-pending="{{good.pending}}" data-gid="{{good.gid}}" bind:click="onCancel" type="danger" size="mini" round>撤销</van-button>
-					<van-button wx-if="{{good.req=='等待你审核'}}" data-id="{{good.id}}" data-youare="{{good.youare}}" data-pending="{{good.pending}}" data-gid="{{good.gid}}" color="#1c92d2" bind:click="onConfirm" size="mini" round>同意</van-button>
-					<van-button class="but" wx-if="{{good.req=='等待你审核'}}" data-id="{{good.id}}" data-youare="{{good.youare}}" data-pending="{{good.pending}}" data-gid="{{good.gid}}" type="danger" bind:click="onConfirm" size="mini" round>拒绝</van-button>
-					<van-button wx-if="{{good.req=='你已收到物品，整个流程结束'}}" data-id="{{good.id}}" data-youare="{{good.youare}}" data-pending="{{good.pending}}" data-gid="{{good.gid}}" bind:click="onComment" size="mini" round>评论</van-button>
+					<view wx:for="{{tool.button(good.req)}}" wx:key="idx" wx:for-index="idx" wx:for-item="button">
+						<van-button data-id="{{good.id}}" data-youare="{{good.youare}}" data-pending="{{button.pending}}" data-gid="{{good.gid}}" bind:click="onHandle" size="mini" round>{{button.context}}</van-button>
+					</view>
 				</view>
 			</view>
 		</my-scroll>
@@ -36,3 +35,38 @@
 	</view>
 	<van-toast id="van-toast" />
 </view>
+
+<wxs module="tool">
+	var button = function(req) {
+		if (req === '等待对方审核') {
+			return [
+				{
+					context: '撤销',
+					pending: 3
+				}
+			]
+		}
+		if (req === '等待你审核') {
+			return [
+				{
+					context: '同意',
+					pending: 2
+				},
+				{
+					context: '拒绝',
+					pending: 4
+				}
+			]
+		}
+		if (req === '你已收到物品，整个流程结束') {
+			return [
+				{
+					context: '评论'
+				}
+			]
+		}
+	}
+	module.exports = {
+		button: button
+	}
+</wxs>

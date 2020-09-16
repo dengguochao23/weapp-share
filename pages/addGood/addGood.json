@@ -3,6 +3,7 @@
     "van-field": "../../miniprogram_npm/@vant/weapp/field",
     "van-cell-group": "../../miniprogram_npm/@vant/weapp/cell-group",
     "van-picker": "../../miniprogram_npm/@vant/weapp/picker",
-    "van-popup": "../../miniprogram_npm/@vant/weapp/popup"
+    "van-popup": "../../miniprogram_npm/@vant/weapp/popup",
+    "van-button": "../../miniprogram_npm/@vant/weapp/button"
   }
 }

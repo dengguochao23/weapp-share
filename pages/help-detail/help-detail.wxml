@@ -1,6 +1,6 @@
 <view class="detail bg">
-	<view class="scroll" >
-		<scroll-view style="height: 100%"  scroll-y="true">
+	<view class="scroll {{control.scrollClass(status)?'':'active'}}">
+		<scroll-view style="height: 100%" scroll-y="true">
 			<view class="head">
 				<view class="status">
 					<text>{{status}}</text>
@@ -34,29 +34,44 @@
 				<view class="title">
 					<text>评论</text>
 				</view>
-				<view class="item" wx:if="{{false}}">
-					<view class="use">
-						<van-image radius="30" width="30" height="30" src="{{logo}}" />
-						<view class="name">
-							<text>dengguochao</text>
+				<view class="container" wx:if="{{comment.length> 0}}">
+					<view class="item" wx:for="{{comment}}" wx:key="idx" wx:for-index="idx" wx:for-item="item">
+						<view class="use">
+							<van-image radius="30" width="30" height="30" src="{{item.userLogo}}" />
+							<view class="name">
+								<text>{{item.username}}</text>
+							</view>
+						</view>
+						<view class="starAndTime">
+							<van-rate size="{{12}}" readonly value="{{item.star}}" />
+							<text class="time">{{item.time}}</text>
+						</view>
+						<view class="content">
+							<text>{{item.content}}</text>
 						</view>
 					</view>
-					<view class="starAndTime">
-						<van-rate size="{{12}}" readonly value="{{ star }}" />
-						<text class="time">2020年2月2日</text>
-					</view>
-					<view class="content">
-						<text>好用好用好用好用好用好用啊啊啊好用好用好用好用好用好用啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊好用好用好用好用好用好用啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊</text>
-					</view>
 				</view>
-				<view class="nothing">
+				<view class="nothing" wx:else>
 					<text>暂无评论</text>
 				</view>
 			</view>
 		</scroll-view>
 	</view>
-	<view class="buttom">
-		<van-button wx:if="{{status=='等待你的提交'||status=='撤回'}}" bind:click="onSubmitReview" data-gid="{{good.gid}}"  type="default" size="mini" round>提交申请</van-button>
-		<van-button wx:if="{{status=='提交成功'}}" bind:click="onCancalDrift" data-gid="{{good.gid}}"  type="danger" size="mini" round>撤销申请</van-button>
+	<view class="buttom" wx:if="{{control.scrollClass(status)}}">
+		<van-button wx:if="{{status=='等待你的提交'||status=='撤回'}}" bind:click="onSubmitReview" data-gid="{{good.gid}}" type="default" round>提交申请</van-button>
+		<van-button wx:if="{{status=='提交成功'}}" bind:click="onCancalDrift" data-gid="{{good.gid}}" type="danger" round>撤销申请</van-button>
 	</view>
 </view>
+
+<wxs module="control">
+	var scrollClass = function(status) {
+		if (status=='等待你的提交'||status=='撤回'||status=='提交成功'){
+			return true
+		} else{
+			return false
+		}
+	}
+	module.exports = {
+		scrollClass: scrollClass
+	}
+</wxs>

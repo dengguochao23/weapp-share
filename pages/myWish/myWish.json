@@ -3,7 +3,7 @@
     "my-nothing": "../../components/nothing/nothing",
     "my-scroll": "../../components/scroll/scroll",
     "van-image": "../../miniprogram_npm/@vant/weapp/image",
-    "my-loading": "../../components/loading/loading"
+    "van-button": "../../miniprogram_npm/@vant/weapp/button"
   },
   "navigationBarTitleText": "我的请求"
 }

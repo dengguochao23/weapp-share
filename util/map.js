@@ -1,5 +1,4 @@
 const QQ_MAP_KEY = 'UBNBZ-JSO6X-AUW4A-Z4FS2-447BT-H6BFG'
-
 export const geocoder = (lat, lon)=>{
   return new Promise((resolve, reject)=>{
     wx.request({

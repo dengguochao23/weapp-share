@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "my-input": "../../components/input/input"
+    "my-input": "../../components/input/input",
+    "van-button": "../../miniprogram_npm/@vant/weapp/button"
   },
   "navigationBarTitleText": "修改邮箱地址"
 }

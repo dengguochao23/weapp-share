@@ -61,9 +61,10 @@
 .section .type .history{
   background-color: #909399;
 }
-.ad{
-  padding: 0 35rpx;
-  margin-bottom: 60rpx;
+.share{
+  position: fixed;
+  bottom: 50rpx;
+  right: 0;
 }
 .infro{
   text-align: center;

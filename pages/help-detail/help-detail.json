@@ -2,7 +2,8 @@
   "usingComponents": {
     "van-icon":"../../miniprogram_npm/@vant/weapp/icon",
     "van-image": "../../miniprogram_npm/@vant/weapp/image",
-    "van-rate": "../../miniprogram_npm/@vant/weapp/rate"
+    "van-rate": "../../miniprogram_npm/@vant/weapp/rate",
+    "van-button": "../../miniprogram_npm/@vant/weapp/button"
   },
   "navigationBarTitleText": "货品详情"
 }

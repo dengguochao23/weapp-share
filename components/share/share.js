@@ -1,4 +1,4 @@
-// components/ad/ad.js
+// components/share/share.js
 Component({
   /**
    * 组件的属性列表

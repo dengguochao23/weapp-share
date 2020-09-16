@@ -5,6 +5,8 @@ import {
   createGoods
 } from '../../models/good'
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
+import{ normallArray} from '../../util/normal'
+const normalGood = normallArray(createGoods)
 Page({
   data: {
     value: '',
@@ -31,12 +33,6 @@ Page({
     })
     this._searchGoods()
   },
-  onClick() {
-    this.setData({
-      goods: []
-    })
-    this._searchGoods()
-  },
   onClean() {
     this.setData({
       goods: []
@@ -54,7 +50,7 @@ Page({
         Toast('没有搜索到相关内容');
         return
       } else {
-        let good = this.normalGood(res.data)
+        let good = normalGood(res.data)
         let goods = this.data.goods
         goods = goods.concat(good)
         this.setData({
@@ -66,17 +62,9 @@ Page({
       }
     })
   },
-  normalGood(data) {
-    let t = []
-    data.forEach((i) => {
-      t.push(createGoods(i))
-    })
-    return t
-  },
   onPullUp() {
-    let page = this.data.page + 1
     this.setData({
-      page
+      page: this.data.page + 1
     })
     if (this.data.pages >= this.data.page) {
       this._searchGoods()

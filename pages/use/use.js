@@ -1,5 +1,7 @@
 import { getGoodByUid }from '../../api/good'
 import { createGoods } from '../../models/good'
+import { normallArray } from '../../util/normal'
+const normalGoods = normallArray(createGoods)
 Page({
   data: {
     logo: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
@@ -19,41 +21,18 @@ Page({
       })
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady: function () {
     this._getGoodByUid(this.data.uid)
   },
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
   _getGoodByUid(uid){
     getGoodByUid(uid).then(res=>{
-      const goods = this.data.goods.concat(this.normalGoods(res))
+      let good = normalGoods(res)
+      let goods = this.data.goods.concat(good)
       this.setData({
-        goods
+        goods,
+        total: good.length
       })
     })
-  },
-  normalGoods(data){
-    let t = []
-    data.forEach((i)=>{
-      t.push(createGoods(i))
-    })
-    const goodLength = t.length
-    this.setData({
-      total:goodLength
-    })
-    return t
   },
   onSelectGood(event){
     const gid = event.currentTarget.dataset.gid

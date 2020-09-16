@@ -12,6 +12,9 @@ import {
   createGoods
 } from '../../models/good'
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
+import { normallArray} from '../../util/normal'
+const normalWishes = normallArray(createWishes)
+const normalGoods = normallArray(createGoods)
 Page({
   data: {
     select: '全部',
@@ -40,12 +43,6 @@ Page({
   },
   onLoad: function () {
     this._getAllWish(this.data.page)
-  },
-  onReady: function () {
-
-  },
-  onShow: function () {
-
   },
   // pop展示控制
   showTypePopup() {
@@ -94,7 +91,7 @@ Page({
       wishes: []
     })
     getAllWishBySid(sid, page).then(res => {
-      let wishes = this.data.wishes.concat(this.noramlWish(res.data))
+      let wishes = this.data.wishes.concat(normalWishes(res.data))
       this.setData({
         total: res.total,
         page: res.page,
@@ -104,27 +101,13 @@ Page({
   },
   _getAllWish(page) {
     getAllWish(page).then(res => {
-      let wishes = this.data.wishes.concat(this.noramlWish(res.data))
+      let wishes = this.data.wishes.concat(normalWishes(res.data))
       this.setData({
         total: res.total,
         page: res.page,
         wishes: wishes
       })
     })
-  },
-  noramlWish(data) {
-    let temp = []
-    data.forEach((d) => {
-      temp.push(createWishes(d))
-    })
-    return temp
-  },
-  normalGoods(data) {
-    let temp = []
-    data.forEach((d) => {
-      temp.push(createGoods(d))
-    })
-    return temp
   },
   // 选择某个
   onSelectWish(event) {
@@ -135,7 +118,7 @@ Page({
       wishId:wishid
     })
     checkMyGood(name).then(res => {
-      const goods = this.data.goods.concat(this.normalGoods(res))
+      const goods = this.data.goods.concat(normalGoods(res))
       this.setData({
         goods
       })
@@ -143,8 +126,6 @@ Page({
     }).catch(e => {
       Toast.fail('没有相关货品');
     })
-  },
-  onChange(event) {
   },
   onRadio(event) {
     const {name, gid} = event.currentTarget.dataset

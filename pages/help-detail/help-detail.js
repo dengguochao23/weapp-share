@@ -9,6 +9,12 @@ import {
   cancalDriftByid,
   createDriftFromHelper
 } from '../../api/drift'
+import {
+  getComment
+}from '../../api/comment'
+import { createComments } from '../../models/comment'
+import {normallArray} from '../../util/normal'
+const normalComments = normallArray(createComments)
 const step = {
   0: {
     status: '等待你的提交',
@@ -52,22 +58,15 @@ const step = {
   }
 }
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     star: 3,
     gid: 0,
     status: step['0'].status,
     next: step['0'].next,
     nextinfo: step['0'].nextinfo,
-    good: ''
+    good: '',
+    comment: ''
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     const eventChannel = this.getOpenerEventChannel()
     eventChannel.on('selectGood', (res) => {
@@ -76,12 +75,21 @@ Page({
       })
       this._getGoodByGid(res)
     })
+    this._getGoodComment(this.data.gid)
     this.__checkDriftById(this.data.gid)
   },
   _getGoodByGid(gid) {
     getGoodByGid(gid).then(res => {
       this.setData({
         good: createGoods(res)
+      })
+    })
+  },
+  // 获取评论
+  _getGoodComment(gid) {
+    getComment(gid).then(res=>{
+      this.setData({
+        comment: normalComments(res)
       })
     })
   },

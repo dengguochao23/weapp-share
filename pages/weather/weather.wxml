@@ -3,7 +3,7 @@
 		<canvas type="2d" id="effect"></canvas>
 		<view class="weather-bg {{tool.bg()}}">
 		</view>
-		<view class="location" bindtap="onClick">
+		<view class="location">
 			<van-icon color="white" name="location-o" />
 			<text>{{air.province}},{{air.city}}</text>
 		</view>
