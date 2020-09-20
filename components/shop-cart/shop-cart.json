@@ -3,7 +3,9 @@
   "usingComponents": {
     "van-icon":"../../miniprogram_npm/@vant/weapp/icon",
     "van-button": "../../miniprogram_npm/@vant/weapp/button",
-    "my-shop-list": "../../components/shop-list/shop-list",
-    "van-overlay": "../../miniprogram_npm/@vant/weapp/overlay"
+    "van-overlay": "../../miniprogram_npm/@vant/weapp/overlay",
+    "van-checkbox": "../../miniprogram_npm/@vant/weapp/checkbox",
+    "van-checkbox-group": "../../miniprogram_npm/@vant/weapp/checkbox-group",
+    "cart-control": "../../components/cart-control/cart-control"
   }
 }

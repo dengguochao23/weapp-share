@@ -5,14 +5,42 @@
 			<van-icon custom-class="van" name="shopping-cart-o" wx:if="{{shopCart.length>0}}" size="40px" color="#1c92d2" info="{{computed.num(shopCart,result)}}" />
 			<van-icon custom-class="van" name="shopping-cart-o" wx:else size="40px" color="#1c92d2" />
 		</view>
-		<view class="total" bindtap="onClick">
+		<view class="total">
 			<text>￥{{computed.price(shopCart, result)}}元</text>
 		</view>
 		<view class="but">
 			<van-button round type="info" size="small" color="#1c92d2" bindtap="onSubmit">提交订单</van-button>
 		</view>
-		<view class="list">
-			<my-shop-list visable="{{visable}}" count="{{count}}" result="{{result}}" shopCart="{{shopCart}}" bind:add="onAdd" bind:less="onLess" bind:clearShopCart="onClearShopCart" bind:changeCheckBox="onChangeCheckbox" bind:selectAll="onSelectAll"></my-shop-list>
+		<view class="list" wx:show="{{visable}}">
+			<view class="listwrapper">
+				<view class="container">
+					<view class="my">
+						<text>你目前还能用的7豆有{{count}}个</text>
+					</view>
+					<view class="select" wx:if="{{shopCart.length>0}}">
+						<van-checkbox value="{{ allSelect }}" bind:change="onSelectAll">全选(已选1件，共0.5kg）</van-checkbox>
+						<view class="clear" bindtap="onClearShopCart">
+							<view>
+								<van-icon name="delete" />
+							</view>
+							<text>清空购物车</text>
+						</view>
+					</view>
+					<view class="shops" wx:if="{{shopCart.length>0}}">
+						<van-checkbox-group value="{{ result }}" bind:change="onChangeCheckbox">
+							<van-checkbox wx:for="{{shopCart}}" wx:key="id" wx:for-item="item" label-class="checkbox-wrapper" name="{{item.id}}">
+								<text class="context">{{item.name}} {{item.price*item.num}}豆</text>
+								<view>
+									<cart-control num="{{item.num}}" bind:add="onAdd" bind:less="onLess" data-shop="{{item}}"></cart-control>
+								</view>
+							</van-checkbox>
+						</van-checkbox-group>
+					</view>
+					<view class="nothing" wx:else>
+						<text>购物车没空</text>
+					</view>
+				</view>
+			</view>
 		</view>
 	</view>
 	<van-overlay show="{{visable}}" bind:click="showCartList" />

@@ -4,6 +4,7 @@ Component({
       type: Array,
       observer () {
         this.initRestult(this.properties.shopCart)
+        this.onAnimationList()
       }
     },
     count: {
@@ -12,7 +13,9 @@ Component({
   },
   data: {
     visable: false,
-    result: []
+    result: [],
+    allSelect: true,
+    listHeight: 0
   },
   observers: {
     'shopCart': function(){
@@ -23,11 +26,22 @@ Component({
         ], 300, function () {
           this.clearAnimation('.icon')
       }.bind(this))
+    },
+    'visable': function () {
+      this.createSelectorQuery().select('.listwrapper').boundingClientRect((res)=>{
+        this.setData({
+          listHeight: res.height
+        })
+      }).exec()
+      this.onAnimationShopList()
     }
   },
   methods: {
     initRestult (shopCart) {
       if (shopCart.length===0){
+        this.setData({
+          allSelect: true
+        })
         return
       }
       this.setData({
@@ -46,18 +60,21 @@ Component({
         visable: !this.data.visable
       })
     },
+    // 增减
     onAdd(event) {
-      const shop= event.detail
+      const shop= event.currentTarget.dataset.shop
       this.triggerEvent('add', shop)
     },
     onLess(event){
-      const shop= event.detail
+      const shop= event.currentTarget.dataset.shop
       this.triggerEvent('less', shop)
     },
+    // 提交
     onSubmit() {
+      // 处理提交的物品
       const result = this.data.result
       const shopCart = this.properties.shopCart
-      if (result.length===0){
+      if (result.length===0 || shopCart.length === 0){
         return
       }
       const parseIntForResult = this.parsetIntForResult(result)
@@ -70,6 +87,7 @@ Component({
           }
         }
       })
+      console.log(temp)
       this.triggerEvent('submit', temp)
     },
     parsetIntForResult (result) {
@@ -81,16 +99,26 @@ Component({
     },
     onClearShopCart () {
       this.triggerEvent('clearShopCart')
-      this.showCartList()
     },
     onChangeCheckbox (event){
+      let current = event.detail
+      let flag;
+      if (current.length < this.data.result.length) {
+        flag = false
+      }
+      if (current.length === this.properties.shopCart.length) {
+        flag = true
+      }
       this.setData({
-        result: event.detail,
-      });
+        allSelect: flag === undefined ? false: flag,
+        result: current
+      })
     },
     onSelectAll (event) {
-      let flag = event.detail
-      if (flag) {
+      this.setData({
+        allSelect: !!event.detail
+      })
+      if (this.data.allSelect) {
         this.initRestult(this.properties.shopCart)
       } else {
         this.setData({
@@ -98,8 +126,52 @@ Component({
         })
       }
     },
-    onClick () {
-      this.triggerEvent('click')
+    // 动画
+    // 列表展示的动画
+    onAnimationShopList () {
+      if (this.data.visable === true) {
+        setTimeout(()=>{
+          const listHeight = this.data.listHeight
+          this.animate('.listwrapper', [
+            {translateY: 0},
+            { translateY: -listHeight }
+          ], 300, function () {
+          }.bind(this))
+        }, 50)
+      } else {
+        setTimeout(()=>{
+          const listHeight = this.data.listHeight
+          this.animate('.listwrapper', [
+            { translateY: -listHeight },
+            {translateY: 0}
+          ], 300, function () {
+            this.clearAnimation('.listwrapper', function () {
+            })
+          }.bind(this))
+        }, 50)
+      }
+    },
+    // 列表里面元素增减的列表动画
+    onAnimationList() {
+      this.createSelectorQuery().select('.listwrapper').boundingClientRect((res)=>{
+        if (res === null) {
+          return
+        }
+        setTimeout(()=>{
+          let currentHeight = res.height
+          let listHeight = this.data.listHeight
+          if (currentHeight<this.data.listHeight) {
+            this.animate('.listwrapper', [
+              { translateY: -listHeight },
+              {translateY: -currentHeight}
+            ], 300, function () {
+              this.setData({
+                listHeight: currentHeight
+              })
+            }.bind(this))
+          }
+        },10)
+    }).exec()
     }
   }
 })

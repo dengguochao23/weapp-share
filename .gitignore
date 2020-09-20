@@ -12,3 +12,8 @@ $RECYCLE.BIN/
 
 # Node.js
 node_modules/
+mainpages/
+mypages/
+driftpages/
+miniprogram_npm/
+

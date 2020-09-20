@@ -53,3 +53,45 @@
   height: auto;
   z-index: -1;
 }
+.listwrapper{
+  max-width: 100%;
+  height: auto;
+  padding: 10px 10px 25px 10px;
+  background-color: #F0F2F5;
+  z-index: -1;
+}
+.select{
+ display: flex;
+ justify-content: space-between;
+ margin-top: 10px;
+ align-items: center;
+}
+.select .clear{
+ display: flex;
+ align-items: center;
+}
+.select text{
+ line-height: 24rpx;
+ font-size: 24rpx;
+}
+.shops{
+ height: auto;
+ margin-top: 20px;
+}
+.shops .checkbox-wrapper{
+ width: 100%;
+ display: flex;
+ justify-content: space-between;
+ height: 30px;
+ line-height: 30px;
+}
+.nothing{
+ width: 100%;
+ height: 50px;
+ text-align: center;
+ font-size: 40rpx;
+ font-weight: 700;
+}
+.nothing text{
+ line-height: 50px;
+}
