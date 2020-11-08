@@ -1,0 +1,55 @@
+.lucky{
+  position: fixed;
+  top: 0px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #1c92d2;
+}
+.turntable{
+  margin-top: 60rpx;
+}
+.chance {
+  width: 100%;
+  margin: 80rpx auto;
+  display: block;
+  text-align: center;
+  font-size: 42rpx;
+  color: white;
+}
+.chance .num{
+  color: red;
+}
+.rule{
+  max-width: 90%;
+  margin: 100rpx auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 10px;
+  position: relative;
+}
+.rule::before{
+  content: '';
+  width: 100%;
+  height: 260rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  border-radius: 10px;
+  z-index: -1;
+  opacity: 0.6;
+}
+.rule text{
+  z-index: 200;
+  width: 100%;
+  margin-bottom: 8px;
+  color: #606266;
+  font-size: 32rpx;
+}
+.rule text:nth-child(1){
+  font-size: 42rpx;
+  font-weight: 900;
+  color: black;
+}

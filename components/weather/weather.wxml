@@ -1,6 +1,6 @@
 <!--components/weather/weather.wxml-->
 <view class="weather-wrapper {{color}}">
-	<text class="city">东莞</text>
+	<text class="city">{{city}}</text>
   <text class="num">{{temp.degree}}°</text>
   <text class="weather">{{temp.weather}}</text>
   <text class="quality">空气质量：{{temp.quality}}</text>

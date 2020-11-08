@@ -2,7 +2,8 @@
   "pages": [
     "pages/main/main",
     "pages/my/my",
-    "pages/drift/drift"
+    "pages/drift/drift",
+    "pages/lucky/lucky"
   ],
   "subpackages": [
     {
@@ -90,10 +91,11 @@
       }
     ]
   },
-  "usingComponents": {
-  },
+  "usingComponents": {},
   "sitemapLocation": "sitemap.json",
-  "requiredBackgroundModes": ["location"],
+  "requiredBackgroundModes": [
+    "location"
+  ],
   "permission": {
     "scope.userLocation": {
       "desc": "你的位置信息将用于小程序获取当地天气"

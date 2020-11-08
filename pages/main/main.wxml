@@ -52,13 +52,22 @@
 	</view>
 	<view class="weather" bindtap="onWeather">
 		<van-divider contentPosition="center" textColor="black" customStyle="font-size: 20px;border-color: #1c92d2;">天气</van-divider>
-		<my-weather temp="{{temp}}"></my-weather>
+		<my-weather temp="{{temp}}" city="{{city}}"></my-weather>
 	</view>
-	<view class="infro">
-		<text>使用流程</text>
+	<view class="lucky" bindtap="onLucky">
+		<van-divider contentPosition="center" textColor="black" customStyle="font-size: 20px;border-color: #1c92d2;">娱乐</van-divider>
+		<view class="lucky-container">
+			<text>参与抽奖</text>
+		</view>
 	</view>
 	<view class="share">
-		<my-share></my-share>
+		<button plain="true" open-type="share" class="but">
+			点击分享小程序
+		</button>
+	</view>
+	<view class="intro" bindtap="onLucky">
+		<text>由本人提供技术支持</text>
+		<text>样式均为本人设计</text>
 	</view>
 </view>
 <van-toast id="van-toast" />

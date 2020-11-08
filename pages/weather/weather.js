@@ -1,4 +1,4 @@
-import { Rain, Star, Cloud,Sunny, Smog} from '../../util/particle'
+import { Rain, Star, Cloud,Sunny, Smog, Snow} from '../../util/particle'
 Page({
   data: {
     air: {},
@@ -42,9 +42,6 @@ Page({
     const roll = this.selectComponent('.roll')
     roll.onStart()
   },
-  onShareAppMessage: function () {
-
-  },
   judge (ctx, weather) {
     let date = new Date()
     let hour = date.getHours()
@@ -58,7 +55,7 @@ Page({
       this.rain(ctx, 10)
     }
     if (weather === '多云'){
-      this.cloud(ctx, 5)
+      this.cloud(ctx, 10)
     }
     if (weather ==='阴'){
       this.cloud(ctx, 1)
@@ -69,6 +66,12 @@ Page({
       }else{
         this.star(ctx)
       }
+    }
+    if (weather === '雾') {
+      this.smog(ctx)
+    }
+    if (weather === '雪') {
+      this.snow(ctx)
     }
   },
   rain(ctx,amount) {
@@ -102,5 +105,10 @@ Page({
     let {width, height} = this.data
     let smog = new Smog(ctx,width,height)
     smog.run()
+  },
+  snow(ctx) {
+    let {width, height} = this.data
+    let snow = new Snow(ctx, width, height)
+    snow.run()
   }
 })

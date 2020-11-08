@@ -28,6 +28,13 @@ class HTTP {
   }
   _request(resolve, reject, url, method, data = {}) {
     let user = wx.getStorageSync('token')
+    // 防止重复提交
+    if (method === 'POST') {
+      wx.showLoading({
+        title: '加载中',
+        mask: true
+      })
+    }
     wx.request({
       url: config.api_base_url + url,
       method: method,
@@ -42,6 +49,9 @@ class HTTP {
           reject(tips[error_code])
         } else {
           resolve(res.data)
+        }
+        if (method === 'POST') {
+          wx.hideLoading()
         }
       },
       fail: (error) => {

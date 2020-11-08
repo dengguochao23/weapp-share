@@ -56,6 +56,9 @@ Page({
       menus: ['shareAppMessage', 'shareTimeline']
     })
   },
+  onShow () {
+    this._getUserDetail()
+  },
   onGetUserInfo(event) {
     this._login()
   },
@@ -69,16 +72,19 @@ Page({
   _login() {
     wx.login({
       complete: (res) => {
-        _getUserInfo().then(res => {
+         _getUserInfo().then(res => {
           const nickname = res.userInfo.nickName
           const logo = res.userInfo.avatarUrl
           this.setData({
             nickname: nickname,
             logo: logo
           })
+        }).then(() => {
           this._getUserDetail()
-          saveUserByNickname(nickname)
-          saveUserByImage(logo)
+        }).then(() => {
+          saveUserByImage(this.data.logo)
+        }).then(()=>{
+          saveUserByNickname(this.data.nickname)
         })
       },
       success(res) {
@@ -181,6 +187,11 @@ Page({
       success(res){
         res.eventChannel.emit('sendTempFormMain', { data: that.data.temp})
       }
+    })
+  },
+  onLucky () {
+    wx.navigateTo({
+      url: '/pages/lucky/lucky',
     })
   }
 })

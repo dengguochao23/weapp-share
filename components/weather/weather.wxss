@@ -1,6 +1,6 @@
 .weather-wrapper {
   max-width: 100%;
-  border-radius: 10rpx;
+  border-radius: 20rpx;
   padding: 30rpx 15rpx;
   display: flex;
   align-items: flex-end;

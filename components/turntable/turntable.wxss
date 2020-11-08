@@ -1,0 +1,116 @@
+.turntable {
+  display: block;
+  width: 100%;
+  height: 600rpx;
+  position: relative;
+}
+.turntable::before{
+  position: absolute;
+  bottom: -50rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  content: '';
+  width: 450rpx;
+  height: 80rpx;
+  background-color: rgb(114, 114, 114);
+  opacity: 0.4;
+  border-radius: 50% / 50%;
+}
+.turntable .wrapper{
+  position: relative;
+  transform-origin: center;
+  width: 100%;
+  height: 600rpx;
+}
+.turntable .wrapper .item {
+  position: absolute;
+  left: 50%;
+  width: 300rpx;
+  height: 600rpx;
+  border-radius: 0px 300rpx 300rpx 0;
+  overflow: hidden;
+  transform-origin: left center;
+}
+
+/* .turntable .wrapper .item:nth-child(1) {
+  transform: rotate(-30deg);
+}
+
+.turntable .wrapper .item:nth-child(2) {
+  transform: rotate(-90deg);
+}
+
+.turntable .wrapper .item:nth-child(3) {
+  transform: rotate(-150deg);
+}
+
+.turntable .wrapper .item:nth-child(4) {
+  transform: rotate(-210deg);
+}
+
+.turntable .wrapper .item:nth-child(5) {
+  transform: rotate(-270deg);
+}
+
+.turntable .wrapper .item:nth-child(6) {
+  transform: rotate(-330deg);
+} */
+
+.turntable .wrapper .item .item-inner {
+  text-align: center;
+  width: 300rpx;
+  height: 600rpx;
+  /* transform: translateX(-300rpx) rotate(60deg); */
+  transform-origin: right center;
+  border-radius: 300rpx 0 0 300rpx;
+  font-size: 32rpx;
+}
+
+.turntable .wrapper .item:nth-child(2n+1) .item-inner {
+  background: #F0F2F5;
+  color: black;
+}
+
+.turntable .wrapper .item:nth-child(2n) .item-inner {
+  background: #80bfe0;
+  color: #ffffff;
+}
+
+.turntable .wrapper .item .item-inner text {
+  display: block;
+  transform-origin: center;
+  /* transform: translateY(100rpx) translateX(43rpx) rotate(-30deg); */
+  /* transform: translateY(100rpx) translateX(72rpx) rotate(-30deg);  */
+}
+
+.turntable .point {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  background-color:#1c92d2;
+  width: 120rpx;
+  height: 120rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  z-index: 1;
+  color: white;
+  font-weight: 900;
+}
+.turntable .point view{
+  text-align: center;
+}
+.turntable .point::after {
+  content: '';
+  left: 50%;
+  top: -6px;
+  transform: translateX(-50%);
+  position: absolute;
+  border-width: 0 6px 6px;
+  border-style: solid;
+  border-color: transparent;
+  border-bottom-color:#1c92d2;
+  transform-origin: center;
+}

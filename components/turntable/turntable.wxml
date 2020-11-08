@@ -1,0 +1,50 @@
+<view class="turntable">
+	<view class="wrapper">
+		<view class="item" wx:for="{{prize}}" wx:key="index" wx:item="item"
+			style="{{computed.rotate(index, prize.length)}}">
+			<view class="item-inner" style="{{computed.inner(prize.length)}}">
+				<text style="{{computed.text(prize.length)}}">{{item.name}}</text>
+			</view>
+		</view>
+	</view>
+	<view class="point" bindtap="onPoint">
+		<text>开始</text>
+	</view>
+</view>
+
+<wxs module="computed">
+	var rotate = function (index, length) {
+		var inital = - (360 / length / 2)
+		var averageRotate = 360 / length
+		var deg = inital - averageRotate * index
+		return 'transform: rotate(' + deg + 'deg);'
+	}
+	var inner = function (length) {
+		var averageRotate = 360 / length
+		return 'transform: translateX(-300rpx) rotate(' + averageRotate + 'deg);'
+	}
+	var text = function (length) {
+		var distance = 0
+		var rotate = 0
+		switch (length) {
+			case 6:
+				distance = 43
+				rotate = 30
+				break
+			case 8:
+				distance = 72
+				rotate = 30
+				break
+			case 4:
+				distance = -20
+				rotate = 40
+				break
+		}
+		return 'transform: translateY(100rpx) translateX(' + distance + 'rpx) rotate(-45deg);'
+	}
+	module.exports = {
+		rotate: rotate,
+		inner: inner,
+		text: text
+	}
+</wxs>

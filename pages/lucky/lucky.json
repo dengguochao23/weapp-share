@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "my-turntable": "../../components/turntable/turntable",
+    "van-dialog": "../../miniprogram_npm/@vant/weapp/dialog"
+  }
+}

@@ -1,24 +1,16 @@
 // components/weather/weather.js
 Component({
-  /**
-   * 组件的属性列表
-   */
   properties: {
     temp: {
       type: Object
+    },
+    city: {
+      type: String
     }
   },
-
-  /**
-   * 组件的初始数据
-   */
   data: {
-    temp: {},
     color: 'good'
   },
-  /**
-   * 组件的方法列表
-   */
   methods: {},
   observers: {
     'temp' : function (temp) {

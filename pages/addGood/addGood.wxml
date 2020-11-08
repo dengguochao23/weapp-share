@@ -36,7 +36,6 @@
     border="{{ true }}"
     type="textarea"
     bind:change="onSetDetail"
-    autosize="true"
     placeholder-style="color:#1c92d2"
   />
 	</van-cell-group>

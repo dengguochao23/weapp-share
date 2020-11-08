@@ -1,13 +1,15 @@
 <view class="Add bg">
 	<van-cell-group class="group">
-    <van-field
-    label="类别选择"
-    value="{{ goodType }}"
-    placeholder="请选择"
-    border="{{ true }}"
-    bind:focus="onShowSelect"
-    placeholder-style="color:#1c92d2"
-  />
+    <view bindtap="onShowSelect">
+      <van-field
+      label="类别选择"
+      value="{{ goodType }}"
+      placeholder="请选择"
+      border="{{ true }}"
+      placeholder-style="color:#1c92d2"
+      readonly
+    />
+    </view>
     <van-popup  position="bottom" show="{{ show }}" bind:close="onClose">
       <van-picker show-toolbar="true" columns="{{ columns }}" value-key="values" bind:cancel="onClose"  bind:change="onChangeType" bind:confirm="onSelectType"/>
     </van-popup>
@@ -25,6 +27,7 @@
     placeholder="请输入货品信息"
     border="{{ true }}"
     bind:change="onSetInfo"
+    autosize="true"
     placeholder-style="color:#1c92d2"
   />
 	</van-cell-group>

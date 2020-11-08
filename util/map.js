@@ -1,10 +1,12 @@
-const QQ_MAP_KEY = 'UBNBZ-JSO6X-AUW4A-Z4FS2-447BT-H6BFG'
+import {
+  config
+} from '../config.js'
 export const geocoder = (lat, lon)=>{
   return new Promise((resolve, reject)=>{
     wx.request({
       url: 'https://apis.map.qq.com/ws/geocoder/v1/',
       data: {
-        key: QQ_MAP_KEY,
+        key: config.QQ_MAP_KEY,
         location: `${lat},${lon}`,
         get_poi: 1
       },

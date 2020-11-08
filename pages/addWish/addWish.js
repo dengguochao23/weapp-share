@@ -1,12 +1,8 @@
+const subs = wx.getStorageSync('subs')
 import {
   addHelp
 } from "../../api/help"
-const subs = wx.getStorageSync('subs')
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     columns: [{
         values: Object.keys(subs),
@@ -24,16 +20,6 @@ Page({
     sid: 0,
     cid: 0,
     show: false
-  },
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
   },
   // 弹出层控制
   onShowSelect() {
@@ -81,7 +67,6 @@ Page({
       cid
     })
     this.onClose()
-    console.log(sid, cid)
   },
   findCid(contentName) {
     let all = wx.getStorageSync('content')

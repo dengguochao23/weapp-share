@@ -5,7 +5,6 @@
     "my-info": "../../components/info/info",
     "my-weather": "../../components/weather/weather",
     "van-divider": "../../miniprogram_npm/@vant/weapp/divider",
-    "my-share": "../../components/share/share",
     "van-toast": "../../miniprogram_npm/@vant/weapp/toast"
   }
 }

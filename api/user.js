@@ -59,3 +59,16 @@ export function ranking () {
     url: 'user/ranking'
   })
 }
+export function getMyLucky () {
+  return http.post({
+    url: 'user/lucky'
+  })
+}
+export function sentMyLucky(prize) {
+  return http.post({
+    url: 'user/lucky',
+    data: {
+      'prize': prize
+    },
+  })
+}

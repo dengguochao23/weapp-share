@@ -17,7 +17,7 @@
       <view class="item" data-index="{{index+1}}" data-user="{{item}}" bindtap="onSelect" wx:key="index" wx:for="{{allUser}}">
         <view class="num">{{index+1}}</view>
         <view class="nickname">
-            <text>{{item.nickname}}</text>
+            <text>{{tool.nickname(item.nickname)}}</text>
             <van-icon wx:if="{{tool.isFlag(index)}}" color="red" size="16px" name="good-job-o" />
         </view>
         <view class="count">
@@ -37,7 +37,15 @@
       return false
     }
   }
+  var nickname = function (n) {
+    if (n === null) {
+      return '无'
+    } else {
+      return n
+    }
+  }
   module.exports = {
-    isFlag:isFlag
+    isFlag:isFlag,
+    nickname:nickname
   }
 </wxs>

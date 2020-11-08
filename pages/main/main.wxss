@@ -16,6 +16,7 @@
   padding: 0 35rpx;
   margin-bottom: 60rpx;
 }
+
 .section{
   padding: 0 35rpx;
   margin-bottom: 60rpx;
@@ -31,7 +32,7 @@
   width: 100%;
 }
 .section .type .item{
-  border-radius: 10rpx;
+  border-radius: 20rpx;
   height: 70px;
   display: flex;
   font-size: 28rpx;
@@ -56,16 +57,47 @@
   background-color:#F56C6C;
 }
 .section .type .help{
-  background-color: #07C160;
+  background-color: rgb(0, 172, 83);
 }
 .section .type .history{
   background-color: #909399;
 }
-.share{
+/* .share{
   position: fixed;
   bottom: 50rpx;
   right: 0;
-}
-.infro{
+} */
+.share{
   text-align: center;
+}
+.share button{
+  border: none !important;
+}
+.intro {
+  font-size: 20rpx;
+  color: rgb(138, 186, 241);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.lucky{
+  padding: 0 35rpx;
+  margin-bottom: 60rpx;
+}
+.lucky{
+  padding: 0 35rpx;
+  margin-bottom: 60rpx;
+}
+.lucky .lucky-container{
+  border-radius: 20rpx;
+  height: 50px;
+  display: flex;
+  font-size: 52rpx;
+  align-items: center;
+  justify-content: center;
+  padding: 15rpx;
+  color: #ffff;
+  background-color:rgba(48, 201, 175, 0.822);
+  margin-bottom: 10px;
 }
