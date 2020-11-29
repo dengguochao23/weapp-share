@@ -13,13 +13,16 @@ import {
 import {
   _getLocation
 } from '../../util/getLocation'
-import { geocoder } from '../../util/map'
+import {
+  geocoder
+} from '../../util/map'
 import {
   getUserDetail,
   saveUserByNickname,
   saveUserByImage
 } from '../../api/user'
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
+const app = getApp()
 Page({
   data: {
     temp: {},
@@ -35,6 +38,13 @@ Page({
     province: '中国'
   },
   onLoad: function (options) {
+    // 分享
+    wx.showShareMenu({
+      withShareTicket: true,
+      menus: ['shareAppMessage', 'shareTimeline']
+    })
+  },
+  onShow() {
     _getUserInfo().then(res => {
       const nickname = res.userInfo.nickName
       const logo = res.userInfo.avatarUrl
@@ -45,19 +55,11 @@ Page({
     }).then(res => {
       this._getUserDetail()
     })
-    _getLocation().then(res=>{
+    _getLocation().then(res => {
       this._getMyLocation()
     }).catch(rej => {
       this._getMyLocation()
     })
-    // 分享
-    wx.showShareMenu({
-      withShareTicket: true,
-      menus: ['shareAppMessage', 'shareTimeline']
-    })
-  },
-  onShow () {
-    this._getUserDetail()
   },
   onGetUserInfo(event) {
     this._login()
@@ -69,10 +71,11 @@ Page({
     }
   },
   // 第一次登陆获取token
+  // 用来获取用户授权后的信息
   _login() {
     wx.login({
-      complete: (res) => {
-         _getUserInfo().then(res => {
+      complete: () => {
+        _getUserInfo().then(res => {
           const nickname = res.userInfo.nickName
           const logo = res.userInfo.avatarUrl
           this.setData({
@@ -83,11 +86,11 @@ Page({
           this._getUserDetail()
         }).then(() => {
           saveUserByImage(this.data.logo)
-        }).then(()=>{
+        }).then(() => {
           saveUserByNickname(this.data.nickname)
         })
       },
-      success(res) {
+      success (res) {
         if (res.code) {
           getToken(res.code).then((res) => {
             wx.setStorage({
@@ -123,7 +126,7 @@ Page({
     getWeather(province, city).then((res) => {
       let t = {
         'province': province,
-        'city':city,
+        'city': city,
         'air': res.air,
         'temp': res.temp
       }
@@ -146,7 +149,7 @@ Page({
       title: '定位中',
       mask: true
     })
-    geocoder(latitude, longitude).then(res=>{
+    geocoder(latitude, longitude).then(res => {
       wx.hideLoading({
         complete: (res) => {},
       })
@@ -161,36 +164,38 @@ Page({
   },
   // 各种路由
   onAskForHelp() {
-    wx.navigateTo({
-      url: '/pages/askForHelp/askForHelp',
+    app.navigateTo({
+      url: '/pages/askForHelp/askForHelp'
     })
   },
-  onHot () {
-    wx.navigateTo({
+  onHot() {
+    app.navigateTo({
       url: '/pages/hot/hot',
     })
   },
   onHelp() {
-    wx.navigateTo({
-      url: '/pages/help/help',
+    app.navigateTo({
+      url: '/pages/help/help'
     })
   },
-  onShop(){
-    wx.navigateTo({
+  onShop() {
+    app.navigateTo({
       url: '/pages/shop/shop',
     })
   },
   onWeather() {
     const that = this
-    wx.navigateTo({
+    app.navigateTo({
       url: '/pages/weather/weather',
-      success(res){
-        res.eventChannel.emit('sendTempFormMain', { data: that.data.temp})
+      success: (res) => {
+        res.eventChannel.emit('sendTempFormMain', {
+          data: that.data.temp
+        })
       }
     })
   },
-  onLucky () {
-    wx.navigateTo({
+  onLucky() {
+    app.navigateTo({
       url: '/pages/lucky/lucky',
     })
   }

@@ -18,6 +18,20 @@ Page({
   onReady: function () {
     this._pending(1, 'all')
   },
+  onShow: function () {
+    // 判断是否有用户授权
+    wx.getSetting({
+      success: (res) => {
+        if (res.authSetting['scope.userInfo']) {
+          return
+        } else {
+          wx.navigateTo({
+            url: '/pages/login/login',
+          })
+        }
+      }
+    })
+  },
   // 标签页的选择
   onSelect(event) {
     let label = event.detail.name

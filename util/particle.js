@@ -226,77 +226,108 @@ class Star extends Particle {
 
 class Sunny extends Particle {
   _init() {
-    this.interval = false
+    this.interval = true
     let width = this.width
     // 星星的数量
     let amount = 6
     let ps = this.particles
     for (let i = 0; i < amount; i++) {
       let p = ''
-      if (i === 1) {
+      if (i === 5) {
         p = {
           x: width,
           y: 0,
           r: 70,
           sangle: 0,
           // 结束
+          eangle: 2 * Math.PI
+          // color: 'rgba(250,250,210)'
+        }
+      }
+      if (i === 4) {
+        p = {
+          x: width,
+          y: 0,
+          r: 130,
+          sangle: 0,
+          // 结束
           eangle: 2 * Math.PI,
-          color: 'rgba(250,250,210)'
+          color: 'rgba(255, 255, 255, 0.4)'
         }
       }
       if (i === 0) {
         p = {
           x: width,
           y: 0,
-          r: 150,
+          r: 5,
+          // 停顿距离
+          tx: width - 130,
+          ty: 130,
+          // 移动速度
+          speed: 130 / 60,
+          // 是否是上半阶段
+          half: true,
           sangle: 0,
           // 结束
           eangle: 2 * Math.PI,
-          color: 'rgba(255, 255, 255, 0.4)'
+          // 透明度
+          opacity: 0.4,
+          to: 0.4,
+          opacitySpeed: 0.4 / 60
+        }
+      }
+      if (i === 1) {
+        p = {
+          x: width,
+          y: 0,
+          r: 10,
+          tx: width - 160,
+          ty: 160,
+          speed: 160 / 60,
+          // 是否是上半阶段
+          half: true,
+          sangle: 0,
+          // 结束
+          eangle: 2 * Math.PI,
+          opacity: 0.6,
+          to: 0.6,
+          opacitySpeed: 0.6 / 60
         }
       }
       if (i === 2) {
         p = {
-          x: width - 130,
-          y: 130,
-          r: 5,
+          x: width,
+          y: 0,
+          r: 20,
+          tx: width - 175,
+          ty: 175,
+          speed: 175 / 60,
+          // 是否是上半阶段
+          half: true,
           sangle: 0,
           // 结束
           eangle: 2 * Math.PI,
-          color: 'rgba(255, 255, 255, 0.4)'
+          opacity: 0.3,
+          to: 0.3,
+          opacitySpeed: 0.3 / 60
         }
       }
       if (i === 3) {
         p = {
-          x: width - 160,
-          y: 160,
-          r: 10,
-          sangle: 0,
-          // 结束
-          eangle: 2 * Math.PI,
-          color: 'rgba(255, 255, 255, 0.6)'
-        }
-      }
-      if (i === 4) {
-        p = {
-          x: width - 175,
-          y: 175,
-          r: 20,
-          sangle: 0,
-          // 结束
-          eangle: 2 * Math.PI,
-          color: 'rgba(255, 255, 255, 0.3)'
-        }
-      }
-      if (i === 5) {
-        p = {
-          x: width - 190,
-          y: 190,
+          x: width,
+          y: 0,
           r: 40,
+          tx: width - 190,
+          ty: 190,
+          speed: 190 / 60,
+          // 是否是上半阶段
+          half: true,
           sangle: 0,
           // 结束
           eangle: 2 * Math.PI,
-          color: 'rgba(255, 255, 255, 0.2)'
+          opacity: 0.2,
+          to: 0.2,
+          opacitySpeed: 0.2 / 60
         }
       }
       ps.push(p)
@@ -310,19 +341,59 @@ class Sunny extends Particle {
     ctx.clearRect(0, 0, this.width, this.height)
     for (let i = 0; i < ps.length; i++) {
       ctx.beginPath()
-      if (i === 0) {
+      if (i === 4) {
         let s = ps[i]
         const grd = ctx.createLinearGradient(this.width, 0, this.width - 150, 150)
-        grd.addColorStop(0, 'white')
-        grd.addColorStop(1, '#76C2F9')
+        grd.addColorStop(0, 'rgba(255,255, 255, 0.7)')
+        grd.addColorStop(0, 'rgba(255,255, 255, 0.3)')
         ctx.fillStyle = grd
         ctx.arc(s.x, s.y, s.r, s.sangle, s.eangle)
         ctx.fill()
       } else {
         let s = ps[i]
+        let color = i === 5? 'rgba(250,250,250)' : `rgba(255, 255, 255, ${s.to})`
         ctx.arc(s.x, s.y, s.r, s.sangle, s.eangle)
-        ctx.fillStyle = s.color
+        ctx.fillStyle = color
         ctx.fill()
+      }
+    }
+    return this._update()
+  }
+  _update() {
+    let {
+      particles,
+      width
+    } = this
+    for (let i = 0; i < particles.length; i++) {
+      let p = particles[i]
+      if (i < 4) {
+        if (p.half){
+          if (p.x < p.tx) {
+            p.x = p.x
+            p.y = p.y
+            p.speed = p.x / 60
+            p.half = false
+            this.stop()
+            setTimeout (()=>{
+              this.run()
+            }, 2000)
+          } else {
+            p.x -= p.speed
+            p.y += p.speed
+          }
+        } else {
+          if (p.x < 0) {
+            p.x = width
+            p.y = 0
+            p.speed = p.ty / 60
+            p.half = true
+            p.to = p.opacity
+          } else {
+            p.x -= p.speed
+            p.y += p.speed
+            p.to -= p.opacitySpeed
+          }
+        }
       }
     }
   }

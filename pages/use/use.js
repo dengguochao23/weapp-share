@@ -2,6 +2,7 @@ import { getGoodByUid }from '../../api/good'
 import { createGoods } from '../../models/good'
 import { normallArray } from '../../util/normal'
 const normalGoods = normallArray(createGoods)
+const app = getApp()
 Page({
   data: {
     logo: 'https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg',
@@ -36,9 +37,9 @@ Page({
   },
   onSelectGood(event){
     const gid = event.currentTarget.dataset.gid
-    wx.navigateTo({
+    app.navigateTo({
       url: '/pages/help-detail/help-detail',
-      success: function (res) {
+      success:  (res) => {
         res.eventChannel.emit('selectGood', gid)
       }
     })

@@ -65,7 +65,7 @@
 			点击分享小程序
 		</button>
 	</view>
-	<view class="intro" bindtap="onLucky">
+	<view class="intro">
 		<text>由本人提供技术支持</text>
 		<text>样式均为本人设计</text>
 	</view>

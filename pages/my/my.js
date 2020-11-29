@@ -2,6 +2,7 @@ import {_getUserInfo} from '../../util/getUser'
 import { getUserDetail }from '../../api/user'
 import { getContents} from '../../api/good'
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
+const app = getApp()
 Page({
   data: {
     logo: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
@@ -34,13 +35,25 @@ Page({
       message: '加载中...'
     })
     this._getUserDetail()
+    // 判断有没有授权
+    wx.getSetting({
+      success: (res) => {
+        if (res.authSetting['scope.userInfo']) {
+          return
+        } else {
+          wx.navigateTo({
+            url: '/pages/login/login',
+          })
+        }
+      }
+    })
   },
   // 各种路由
   onMobile() {
     let data = this.data.mobile == '空'? this.data.mobile: JSON.parse(this.data.mobile)
-    wx.navigateTo({
+    app.navigateTo({
       url: '/pages/mobile/mobile',
-      success: function (res) {
+      success:  (res) => {
         // 通过eventChannel向被打开页面传送数据
         res.eventChannel.emit('sendMobile', data)
       }
@@ -48,26 +61,26 @@ Page({
   },
   onEmail() {
     let data = this.data.email
-    wx.navigateTo({
+    app.navigateTo({
       url: '/pages/email/email',
-      success: function (res) {
+      success:  (res) => {
         // 通过eventChannel向被打开页面传送数据
         res.eventChannel.emit('sendEmail', data)
       }
     })
   },
   onRoom() {
-    wx.navigateTo({
+    app.navigateTo({
       url: '/pages/room/room',
     })
   },
   onGoods(){
-    wx.navigateTo({
+    app.navigateTo({
       url: '/pages/myGoods/myGoods',
     })
   },
   onWish() {
-    wx.navigateTo({
+    app.navigateTo({
       url: '/pages/myWish/myWish',
     })
   },

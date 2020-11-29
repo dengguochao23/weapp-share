@@ -3,7 +3,8 @@
     "pages/main/main",
     "pages/my/my",
     "pages/drift/drift",
-    "pages/lucky/lucky"
+    "pages/lucky/lucky",
+    "pages/login/login"
   ],
   "subpackages": [
     {

@@ -3,6 +3,7 @@ import { getMyGood,handleGood } from '../../api/good'
 import { createGoods } from '../../models/good'
 import { normallArray } from '../../util/normal'
 const normalGoods = normallArray(createGoods)
+const app = getApp()
 Page({
   data: {
     goods: [],
@@ -18,7 +19,7 @@ Page({
   },
   // 路由
   onAddGood () {
-    wx.navigateTo({
+    app.navigateTo({
       url: '/pages/addGood/addGood'
     })
   },

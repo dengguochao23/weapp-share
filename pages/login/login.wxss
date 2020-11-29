@@ -1,0 +1,49 @@
+.login{
+  position: fixed;
+  top: 0px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.logo{
+  width: 100%;
+  text-align: center;
+  margin-top: 100rpx;
+  margin-bottom: 20px;
+}
+.logo image {
+  width: 100px;
+  height: 100px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+.login .title{
+  font-size: 50rpx;
+  font-weight: 700;
+  color: #1c92d2;
+}
+.context{
+  width: 70%;
+}
+.context text{
+  display: block;
+  color: #D3D3D3;
+  font-size: 24rpx;
+}
+.context text:nth-last-child(4){
+  font-size: 36rpx;
+  font-weight: 700;
+  color: black;
+  margin-bottom: 12px;
+}
+.but{
+  width: 70%;
+  height: 46px;
+  border: none !important;
+  background-color: #1c92d2 !important;
+  color: white !important;
+  margin-top: 80px;
+}

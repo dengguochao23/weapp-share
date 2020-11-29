@@ -40,7 +40,7 @@
 				rotate = 40
 				break
 		}
-		return 'transform: translateY(100rpx) translateX(' + distance + 'rpx) rotate(-45deg);'
+		return 'transform: translateY(100rpx) translateX(' + distance + 'rpx) rotate(-'+ rotate +'deg);'
 	}
 	module.exports = {
 		rotate: rotate,

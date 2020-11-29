@@ -1,6 +1,7 @@
 import { Rain, Star, Cloud,Sunny, Smog, Snow} from '../../util/particle'
 Page({
   data: {
+    // air: {'province': "广东省", 'city': "东莞市", 'degree': 28, 'weather': "晴", "quality": "良", "pm2": 33, "co": 0.6, "no2": 14, "so2": 12, "pm10": 51},
     air: {},
     width: 0,
     height:0
@@ -11,6 +12,7 @@ Page({
       this.setData({
         air: data.data
       })
+      console.log(this.data.air)
     })
     wx.getSystemInfo({
       success: (res)=>{

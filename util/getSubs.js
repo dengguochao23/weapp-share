@@ -41,6 +41,7 @@ function findContent(content) {
     }
   }
 }
+
 export {
   getAllSubs,
   normalSub

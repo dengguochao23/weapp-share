@@ -1,0 +1,24 @@
+<view class="login bg">
+  <view class="logo">
+    <image src="{{tool.img()}}" />
+  </view>
+  <view class="title">
+    <text>七享网</text>
+  </view>
+  <view class="context">
+    <van-divider borderColor="#D3D3D3"></van-divider>
+    <text>登陆后应用获得以下权限</text>
+    <text>1、获得你的公开信息（昵称、头像等）</text>
+    <text>2、可以完全享用该项目</text>
+    <text>3、放心我绝不会盗用您的微信信息另做它用的，亲~</text>
+  </view>
+    <button class="but" plain="true" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo">确认登陆</button>
+</view>
+<wxs module="tool">
+  var img = function () {
+    return '../../image/logo/logo.png'
+  }
+  module.exports = {
+    img: img
+  }
+</wxs>

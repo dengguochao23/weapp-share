@@ -2,6 +2,7 @@ import {
   getAllUser,
   ranking
 } from '../../api/user'
+const app = getApp()
 Page({
   data: {
     page: 1,
@@ -35,13 +36,13 @@ Page({
     // 当前选择的ID
     const id = event.currentTarget.dataset.index 
     if (id===this.data.ranking){
-      wx.navigateTo({
+      app.navigateTo({
         url: '/pages/myGoods/myGoods',
       })
     }else{
-      wx.navigateTo({
+      app.navigateTo({
         url: '/pages/use/use',
-        success: function (res) {
+        success: (res) => {
           res.eventChannel.emit('sendUse', data)
         }
       })

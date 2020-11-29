@@ -63,7 +63,7 @@ Page({
     }).then(() => {
       this.selectComponent('#myTurnTable').onClear()
     }).then(() => {
-      // sentMyLucky(prize)
+      sentMyLucky(prize)
     }).then(() => {
       this._getMyLucky()
     })

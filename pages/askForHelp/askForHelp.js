@@ -7,6 +7,7 @@ import {
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
 import{ normallArray} from '../../util/normal'
 const normalGood = normallArray(createGoods)
+const app = getApp()
 Page({
   data: {
     value: '',
@@ -73,10 +74,10 @@ Page({
   // 选择
   onSelectGood(e) {
     let gid = e.currentTarget.dataset.gid
-    wx.navigateTo({
+    app.navigateTo({
       url: '/pages/help-detail/help-detail',
       events: {},
-      success: function (res) {
+      success: (res) => {
         // 通过eventChannel向被打开页面传送数据
         res.eventChannel.emit('selectGood', gid)
       }
