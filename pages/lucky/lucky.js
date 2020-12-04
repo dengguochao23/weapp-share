@@ -43,7 +43,7 @@ Page({
     ],
     chance: 0
   },
-  onLoad: function (options) {
+  onShow: function (options) {
     this._getMyLucky()
   },
   _getMyLucky() {
@@ -63,9 +63,9 @@ Page({
     }).then(() => {
       this.selectComponent('#myTurnTable').onClear()
     }).then(() => {
-      sentMyLucky(prize)
-    }).then(() => {
-      this._getMyLucky()
+      sentMyLucky(prize).then(res => {
+        this._getMyLucky()
+      })
     })
   },
   // 没有抽奖机会

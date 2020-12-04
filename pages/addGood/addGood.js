@@ -1,17 +1,8 @@
-const subs = wx.getStorageSync('subs')
 import { addGood } from '../../api/good'
 Page({
   data: {
-    columns: [{
-        values: Object.keys(subs),
-        className: 'column1'
-      },
-      {
-        values: subs['生活'],
-        className: 'column2'
-      }
-    ],
-    subs: {},
+    columns: null,
+    subs: null,
     name: '',
     goodType: '',
     specification: '',
@@ -19,6 +10,20 @@ Page({
     sid: 0,
     cid: 0,
     show: false
+  },
+  onReady() {
+    let subs = wx.getStorageSync('subs')
+    this.setData({
+      subs: subs,
+      columns: [{
+        values: Object.keys(subs),
+        className: 'column1'
+      },
+      {
+        values: subs['生活'],
+        className: 'column2'
+      }]
+    })
   },
   // 弹出层控制
   onShowSelect() {
@@ -56,7 +61,7 @@ Page({
       value,
       index
     } = event.detail;
-    picker.setColumnValues(1, subs[value[0]])
+    picker.setColumnValues(1, this.data.subs[value[0]])
   },
   onSelectType(event) {
     const {
@@ -74,7 +79,6 @@ Page({
       cid
     })
     this.onClose()
-    console.log(sid, cid)
   },
   findCid(contentName) {
     let all = wx.getStorageSync('content')

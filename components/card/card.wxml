@@ -1,7 +1,7 @@
 <!--components/card/card.wxml-->
 <view class="card">
 	<view class="head">
-		<button plain="true" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" class="but">
+		<button plain="true" lang="zh_CN" bindtap="onGotUserInfo" class="but">
 			<van-image width="100" height="100" round="true" src="{{logo}}" />
 		</button>
 	</view>

@@ -12,7 +12,6 @@ Page({
       this.setData({
         air: data.data
       })
-      console.log(this.data.air)
     })
     wx.getSystemInfo({
       success: (res)=>{

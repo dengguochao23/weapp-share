@@ -46,6 +46,13 @@ class HTTP {
       success: (res) => {
         if (res.data.error_code) {
           let error_code = res.data.error_code
+          if (error_code === 1003) {
+            setTimeout( ()=> {
+              wx.navigateTo({
+                url: '/pages/login/login',
+              })
+            }, 500)
+          }
           reject(tips[error_code])
         } else {
           resolve(res.data)

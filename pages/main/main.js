@@ -5,9 +5,6 @@ import {
   getWeather
 } from '../../api/weather'
 import {
-  getToken
-} from '../../api/token'
-import {
   _getUserInfo
 } from '../../util/getUser'
 import {
@@ -35,7 +32,9 @@ Page({
     comment: 0,
     count: 0,
     city: '中国',
-    province: '中国'
+    province: '中国',
+    // 用于只让获取用户细节的执行一次，而剩下利用下拉刷新的方式获取用户信息
+    firstLogin: false
   },
   onLoad: function (options) {
     // 分享
@@ -43,23 +42,33 @@ Page({
       withShareTicket: true,
       menus: ['shareAppMessage', 'shareTimeline']
     })
-  },
-  onShow() {
-    _getUserInfo().then(res => {
-      const nickname = res.userInfo.nickName
-      const logo = res.userInfo.avatarUrl
-      this.setData({
-        nickname: nickname,
-        logo: logo
-      })
-    }).then(res => {
-      this._getUserDetail()
-    })
     _getLocation().then(res => {
       this._getMyLocation()
     }).catch(rej => {
       this._getMyLocation()
     })
+  },
+  onPullDownRefresh(){
+    this._getUserDetail()
+  },
+  onShow() {
+    if (!this.data.firstLogin) {
+      _getUserInfo().then(res => {
+        const nickname = res.userInfo.nickName
+        const logo = res.userInfo.avatarUrl
+        this.setData({
+          nickname: nickname,
+          logo: logo,
+          firstLogin: true
+        })
+      }).then(res => {
+        saveUserByImage(this.data.logo)
+        saveUserByNickname(this.data.nickname)
+      })
+      .then(res => {
+        this._getUserDetail()
+      })
+    }
   },
   onGetUserInfo(event) {
     this._login()
@@ -73,30 +82,13 @@ Page({
   // 第一次登陆获取token
   // 用来获取用户授权后的信息
   _login() {
-    wx.login({
-      complete: () => {
-        _getUserInfo().then(res => {
-          const nickname = res.userInfo.nickName
-          const logo = res.userInfo.avatarUrl
-          this.setData({
-            nickname: nickname,
-            logo: logo
-          })
-        }).then(() => {
-          this._getUserDetail()
-        }).then(() => {
-          saveUserByImage(this.data.logo)
-        }).then(() => {
-          saveUserByNickname(this.data.nickname)
-        })
-      },
-      success (res) {
-        if (res.code) {
-          getToken(res.code).then((res) => {
-            wx.setStorage({
-              data: res.token,
-              key: 'token',
-            })
+    wx.getSetting({
+      success: (res) => {
+        if (res.authSetting['scope.userInfo'] && wx.getStorageSync('token')) {
+          return
+        } else {
+          wx.navigateTo({
+            url: '/pages/login/login',
           })
         }
       }
@@ -115,10 +107,12 @@ Page({
         count: res.count,
         goods: res.goods,
         comment: res.comment,
-        helps: res.helps
+        helps: res.wishes
       })
     }).then(res => {
       Toast.clear();
+    }).then(res => {
+      wx.stopPullDownRefresh()
     })
   },
   // 天气

@@ -4,10 +4,11 @@
     "pages/my/my",
     "pages/drift/drift",
     "pages/lucky/lucky",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/addGood/addGood",
+    "pages/addWish/addWish"
   ],
-  "subpackages": [
-    {
+  "subpackages": [{
       "root": "mainpages",
       "name": "main",
       "pages": [
@@ -26,8 +27,6 @@
         "pages/room/room",
         "pages/mobile/mobile",
         "pages/email/email",
-        "pages/addGood/addGood",
-        "pages/addWish/addWish",
         "pages/myWish/myWish",
         "pages/myGoods/myGoods"
       ]
@@ -71,8 +70,7 @@
     "color": "#000000",
     "selectedColor": "#1c92d2",
     "backgroundColor": "#ffffff",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/main/main",
         "text": "首页",
         "iconPath": "./image/tab/main.png",
