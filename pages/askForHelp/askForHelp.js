@@ -41,12 +41,7 @@ Page({
   },
   // 搜索处理
   _searchGoods() {
-    Toast.loading({
-      mask: true,
-      message: '搜索中...'
-    })
     searchGoods(this.data.value, this.data.page).then(res => {
-      Toast.clear();
       if (res.data.length == 0) {
         Toast('没有搜索到相关内容');
         return

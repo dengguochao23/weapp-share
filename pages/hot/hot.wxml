@@ -13,12 +13,14 @@
     <text>7豆</text>
   </view>
   <view class="scroll">
-    <my-scroll height="100" page="{{page}}" prepage="10" total="{{total}}" bind:onPullUp="onPullUp" data="{{allUser}}">
-      <view class="item" data-index="{{index+1}}" data-user="{{item}}" bindtap="onSelect" wx:key="index" wx:for="{{allUser}}">
+    <my-scroll class="list" wx:if="{{allUser.length>0}}" height="100" page="{{page}}" prepage="15" total="{{total}}"
+      bind:onPullUp="onPullUp" data="{{allUser}}">
+      <view slot="container" class="item" data-index="{{index+1}}" data-user="{{item}}" bindtap="onSelect"
+        wx:key="index" wx:for="{{allUser}}" wx:for-index="index">
         <view class="num">{{index+1}}</view>
         <view class="nickname">
-            <text>{{tool.nickname(item.nickname)}}</text>
-            <van-icon wx:if="{{tool.isFlag(index)}}" color="red" size="16px" name="good-job-o" />
+          <text>{{tool.nickname(item.nickname)}}</text>
+          <van-icon wx:if="{{tool.isFlag(index)}}" color="red" size="16px" name="good-job-o" />
         </view>
         <view class="count">
           <text>{{item.count}}个</text>
@@ -31,9 +33,9 @@
 
 <wxs module="tool">
   var isFlag = function (n) {
-    if(n===0|n===1|n===2){
+    if (n === 0 | n === 1 | n === 2) {
       return true
-    }else{
+    } else {
       return false
     }
   }
@@ -45,7 +47,7 @@
     }
   }
   module.exports = {
-    isFlag:isFlag,
-    nickname:nickname
+    isFlag: isFlag,
+    nickname: nickname
   }
 </wxs>

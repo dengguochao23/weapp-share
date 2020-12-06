@@ -48,7 +48,8 @@
   right: 0;
   bottom: 0;
 }
-.scroll .item{
+.list .item{
+  width: 100%;
   font-size: 26rpx;
   height: 40px;
   background-color: white;
@@ -56,22 +57,22 @@
   align-items: center;
   margin-bottom: 10px;
 }
-.scroll .item .num{
+.list .item .num{
   text-align: center;
   width: 15%;
   padding-left: 20px;
 }
-.scroll .item .nickname{
+.list .item .nickname{
   flex: 1;
 }
-.scroll .item .nickname text{
+.list .item .nickname text{
   margin-right: 8px;
 }
-.scroll .item .count{
+.list .item .count{
   width: 15%;
   display: flex;
   justify-content: space-between;
 }
-.scroll .item .count van-icon{
+.list .item .count van-icon{
   margin-right: 10px;
 }

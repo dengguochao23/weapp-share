@@ -9,8 +9,8 @@
 		<text>物品名称</text>
 	</view>
 	<view class="scroll">
-		<my-scroll wx-if="{{wishes.length>0}}" class="list" height="100" page="{{page}}" prepage="10" total="{{total}}" bind:onPullUp="onPullUp" data="{{wishes}}">
-			<view class="item" wx:for="{{wishes}}" bindtap="onSelectWish" data-wishId="{{wish.id}}" data-uid="{{wish.user['id']}}" data-name="{{wish.name}}" wx:key="idx" wx:for-index="idx" wx:for-item="wish">
+		<my-scroll wx-if="{{wishes.length>0}}" class="list" height="100" page="{{page}}" prepage="15" total="{{total}}" bind:onPullUp="onPullUp" data="{{wishes}}">
+			<view slot="container" class="item" wx:for="{{wishes}}" bindtap="onSelectWish" data-wishId="{{wish.id}}" data-uid="{{wish.user['id']}}" data-name="{{wish.name}}" wx:key="idx" wx:for-index="idx" wx:for-item="wish">
 				<text class="nickname">{{wish.user['nickname']}}</text>
 				<text class="subs">{{wish.subsname}}</text>
 				<text class="good">{{wish.name}}</text>

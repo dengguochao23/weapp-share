@@ -1,5 +1,10 @@
-// components/scroll/scroll.js
+// 必须传入 page 当前的页数， total 为目标的总数，prepage 每页的数目
+// data 为导入的数目
+
 Component({
+  options: {
+    multipleSlots: true
+  },
   properties: {
     height: {
       type: Number
@@ -66,6 +71,7 @@ Component({
         }
         this.triggerEvent('onPullUp')
         this.setData({
+          more: true,
           triggered: true
         })
       }

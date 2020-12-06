@@ -6,6 +6,7 @@ const app = getApp()
 Page({
   data: {
     page: 1,
+    pages: 1,
     total: 1,
     allUser: [],
     ranking: 1
@@ -20,6 +21,7 @@ Page({
       this.setData({
         total: res.total,
         page: res.page,
+        pages: res.pages,
         allUser: allUser
       })
     })
@@ -46,6 +48,12 @@ Page({
           res.eventChannel.emit('sendUse', data)
         }
       })
+    }
+  },
+  onPullUp(e) {
+    let page = this.data.page + 1
+    if (this.data.pages >= page) {
+      this._getAllUser(page)
     }
   }
 })

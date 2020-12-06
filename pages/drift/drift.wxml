@@ -9,7 +9,7 @@
 	</van-tabs>
 	<view class="list">
 		<my-scroll wx-if="{{pending.length>0}}" height="100" page="{{page}}" prepage="4" total="{{total}}" bind:onPullUp="onPullUp" data="{{pending}}">
-			<view class="item" wx:for="{{pending}}" wx:key="idx" wx:for-index="idx" wx:for-item="good">
+			<view slot="container" class="item" wx:for="{{pending}}" wx:key="idx" wx:for-index="idx" wx:for-item="good">
 				<view class="head">
 					<view class="user">
 						<van-icon name="contact" />

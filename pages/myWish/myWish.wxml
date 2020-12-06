@@ -1,29 +1,33 @@
 <view class="myWish bg">
 	<view class="scroll">
-		<my-scroll wx-if="{{wishes.length>0}}" class="list" height="100" page="{{page}}" prepage="4" total="{{total}}" bind:onPullUp="onPullUp" data="{{wishes}}">
-		<view class="item" wx:for="{{wishes}}" wx:key="idx" wx:for-index="idx" wx:for-item="wish">
-			<view class="head">
-				<text>{{wish.time}}</text>
-				<text class="status">{{wish.status}}</text>
-			</view>
-			<view class="container">
-				<van-image radius="10" width="80" height="80" src="{{logo}}" />
-				<view class="content">
-					<text>{{wish.name}}/{{wish.info}}</text>
+		<my-scroll wx-if="{{wishes.length>0}}" class="list" height="100" page="{{page}}" prepage="4" total="{{total}}"
+			bind:onPullUp="onPullUp" data="{{wishes}}">
+			<view slot="container" class="item" wx:for="{{wishes}}" wx:key="idx" wx:for-index="idx" wx:for-item="wish">
+				<view class="head">
+					<text>{{wish.time}}</text>
+					<text class="status">{{wish.status}}</text>
+				</view>
+				<view class="container">
+					<van-image radius="10" width="80" height="80" src="{{logo}}" />
+					<view class="content">
+						<text>{{wish.name}}/{{wish.info}}</text>
+					</view>
+				</view>
+				<view class="bottom">
+					<view class="fromAdmin">
+						<text>{{wish.status}}</text>
+					</view>
+					<van-button wx-if="{{wish.status=='使用中'}}" data-id="{{wish.id}}" bind:click="onCancel" type="danger"
+						size="mini" round>撤销</van-button>
+					<van-button wx:else data-id="{{wish.id}}" color="#1c92d2" bind:click="onConfirm" size="mini" round>使用
+					</van-button>
 				</view>
 			</view>
-			<view class="bottom">
-				<view class="fromAdmin">
-					<text>{{wish.status}}</text>
-				</view>
-				<van-button wx-if="{{wish.status=='使用中'}}" data-id="{{wish.id}}" bind:click="onCancel" type="danger" size="mini" round>撤销</van-button>
-        <van-button wx:else data-id="{{wish.id}}" color="#1c92d2" bind:click="onConfirm" size="mini" round>使用</van-button>
-			</view>
-		</view>
-	</my-scroll>
-	<my-nothing content="赶快点击下方增加你的愿望" class="none" wx:else></my-nothing>
+		</my-scroll>
+		<my-nothing content="赶快点击下方增加你的愿望" class="none" wx:else></my-nothing>
 	</view>
 	<view class="but">
-		<van-button bind:click="onAddWish" round custom-class="vanButton" color="#1c92d2" type="primary" block>+新增你的愿望</van-button>
+		<van-button bind:click="onAddWish" round custom-class="vanButton" color="#1c92d2" type="primary" block>+新增你的愿望
+		</van-button>
 	</view>
 </view>

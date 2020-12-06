@@ -3,5 +3,6 @@
     "van-icon": "../../miniprogram_npm/@vant/weapp/icon",
     "van-tag": "../../miniprogram_npm/@vant/weapp/tag",
     "my-scroll": "../../components/scroll/scroll"
-  }
+  },
+  "navigationBarTitleText": "热心用户"
 }

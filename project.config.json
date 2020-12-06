@@ -27,9 +27,11 @@
       "disablePlugins": [],
       "outputPath": ""
     },
+    "bundle": false,
     "useIsolateContext": true,
     "useCompilerModule": false,
     "userConfirmedUseCompilerModuleSwitch": false,
+    "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
     "minifyWXSS": true
@@ -113,9 +115,8 @@
           "scene": null
         },
         {
-          "id": -1,
-          "name": "pages/lucky/lucky",
-          "pathName": "pages/lucky/lucky",
+          "name": "pages/hot/hot",
+          "pathName": "pages/hot/hot",
           "query": "",
           "scene": null
         },
@@ -128,6 +129,7 @@
         {
           "name": "pages/login/login",
           "pathName": "pages/login/login",
+          "query": "",
           "scene": null
         }
       ]

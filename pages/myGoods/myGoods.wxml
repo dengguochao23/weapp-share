@@ -1,7 +1,7 @@
 <view class="myGood bg">
   <view class="scroll">
     <my-scroll wx-if="{{goods.length>0}}" class="list" height="100" page="{{page}}" prepage="4" total="{{total}}" bind:onPullUp="onPullUp" data="{{goods}}">
-		<view class="item" wx:for="{{goods}}" wx:key="idx" wx:for-index="idx" wx:for-item="good">
+		<view slot="container" class="item" wx:for="{{goods}}" wx:key="idx" wx:for-index="idx" wx:for-item="good">
       <view class="head">
         <text>{{good.time}}</text>
         <text class="status">{{good.status}}</text>

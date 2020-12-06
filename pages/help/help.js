@@ -1,4 +1,3 @@
-const subs = wx.getStorageSync('subs')
 import {
   getAllWish,
   getAllWishBySid,
@@ -20,17 +19,11 @@ Page({
     select: '全部',
     showType: false,
     showMyWish: false,
-    columns: [{
-        values: Object.keys(subs),
-        className: 'column1'
-      },
-      {
-        values: subs['生活'],
-        className: 'column2'
-      }
-    ],
+    columns: null,
+    subs: null,
     sid: 0,
     page: 1,
+    pages: 1,
     total: 1,
     goods: [],
     wishes: [],
@@ -43,6 +36,20 @@ Page({
   },
   onLoad: function () {
     this._getAllWish(this.data.page)
+  },
+  onReady() {
+    let subs = wx.getStorageSync('subs')
+    this.setData({
+      subs: subs,
+      columns: [{
+        values: Object.keys(subs),
+        className: 'column1'
+      },
+      {
+        values: subs['生活'],
+        className: 'column2'
+      }]
+    })
   },
   // pop展示控制
   showTypePopup() {
@@ -68,7 +75,7 @@ Page({
       value,
       index
     } = event.detail;
-    picker.setColumnValues(1, subs[value[0]])
+    picker.setColumnValues(1, this.data.subs[value[0]])
   },
   onSelectType(event) {
     const {
@@ -95,6 +102,7 @@ Page({
       this.setData({
         total: res.total,
         page: res.page,
+        pages: res.pages,
         wishes: wishes
       })
     })
@@ -105,6 +113,7 @@ Page({
       this.setData({
         total: res.total,
         page: res.page,
+        pages: res.pages,
         wishes: wishes
       })
     })
@@ -134,6 +143,13 @@ Page({
       gid,
       radio: name
     });
+  },
+  // 下拉刷新
+  onPullUp () {
+    let page = this.data.page + 1
+    if (this.data.pages >= page) {
+      this._getAllWish(page)
+    }
   },
   // 提交
   onSendMyGood () {

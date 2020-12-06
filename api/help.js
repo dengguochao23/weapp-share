@@ -14,7 +14,7 @@ export function addHelp(sid, name, info) {
 }
 export function getMyHelp(page) {
   return http.get({
-    url: `help/get/page=${page}`
+    url: `help/get/page=${page}&&per=5`
   })
 }
 // 10代表取消，11代表生效，12代表删除
@@ -29,13 +29,13 @@ export function handleWish(id, type) {
 }
 export function getAllWish(page) {
   return http.get({
-    url: `help/all/page=${page}`
+    url: `help/all/page=${page}&&per=15`
   })
 }
 
 export function getAllWishBySid(sid, page) {
   return http.get({
-    url: `help/all/sid=${sid}&&page=${page}`
+    url: `help/all/sid=${sid}&&page=${page}&&per=15`
   })
 }
 
