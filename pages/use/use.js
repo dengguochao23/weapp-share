@@ -18,7 +18,7 @@ Page({
       this.setData({
         user:res,
         uid: res.id,
-        logo: res.image
+        logo: res.image || this.data.logo
       })
     })
   },

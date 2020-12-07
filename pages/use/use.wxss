@@ -8,7 +8,7 @@
 }
 .head .background{
   width: 100%;
-  background-color: red;
+  background-color: #1c92d2;
   height: 300px;
   position: absolute;
   top: 0;
