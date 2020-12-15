@@ -9,6 +9,7 @@ Page({
     wx.login({
       success: (res) => {
         if (res.code) {
+          console.log('ddd')
           getToken(res.code).then((res) => {
             wx.setStorage({
               key: 'token',
@@ -17,6 +18,8 @@ Page({
           }).then(() => {
             wx.navigateBack()
           })
+        } else {
+          console.log('ee')
         }
       }
     })

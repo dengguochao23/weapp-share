@@ -76,7 +76,6 @@ const Base64 = {
     }
     return utftext;
   },
-
   // private method for UTF-8 decoding
   _utf8_decode: function (utftext) {
     var string = "";
@@ -86,9 +85,7 @@ const Base64 = {
     var c2 = 0;
 
     while (i < utftext.length) {
-
       c = utftext.charCodeAt(i);
-
       if (c < 128) {
         string += String.fromCharCode(c);
         i++;

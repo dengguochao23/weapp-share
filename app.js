@@ -40,8 +40,6 @@ App({
     })
     this.proxy()
   },
-  onShow: function () {
-  },
   // 类似vue-router中的路由卫士
   // 利用监测url的变化也就是路由的变化，来监测是否有用户的授权，没授权的就返回登陆页面
   proxy () {
