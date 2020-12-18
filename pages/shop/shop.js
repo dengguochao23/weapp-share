@@ -74,7 +74,7 @@ Page({
   onClearShopCart () {
     Dialog.confirm({
       title: '注意',
-      message: '你确定要清空你的购物车吗？',
+      message: '你确定要清空你的7享袋吗？',
     }).then(() => {
       this.setData({
         shopCart: []
@@ -84,7 +84,7 @@ Page({
   onSubmit(event){
     let shopCart = event.detail
     sellMyShop(shopCart).then(res=>{
-      Toast.success('提交成功')
+      Toast.success('提交兑换')
       this.setData({
         shopCart: []
       })

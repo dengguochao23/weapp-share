@@ -42,9 +42,9 @@
 				<van-icon size="50px" name="bag-o" />
 				<view class="name">
 					<rich-text class="title">
-						<text>我的商城</text>
+						<text>我要兑换</text>
 					</rich-text>
-					<text>我的商城</text>
+					<text>我要兑换</text>
 				</view>
 				<van-icon size="30px" name="arrow" />
 			</view>
@@ -57,7 +57,7 @@
 	<view class="lucky" bindtap="onLucky">
 		<van-divider contentPosition="center" textColor="black" customStyle="font-size: 20px;border-color: #1c92d2;">娱乐</van-divider>
 		<view class="lucky-container">
-			<text>参与抽奖</text>
+			<text>快乐转盘</text>
 		</view>
 	</view>
 	<view class="share">

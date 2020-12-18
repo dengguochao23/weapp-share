@@ -2,14 +2,14 @@
 	<view class="container">
 		<view class="wrapper"></view>
 		<view class="icon" bindtap="showCartList">
-			<van-icon custom-class="van" name="shopping-cart-o" wx:if="{{shopCart.length>0}}" size="40px" color="#1c92d2" info="{{computed.num(shopCart,result)}}" />
-			<van-icon custom-class="van" name="shopping-cart-o" wx:else size="40px" color="#1c92d2" />
+			<van-icon custom-class="van" name="gift-o" wx:if="{{shopCart.length>0}}" size="40px" color="#1c92d2" info="{{computed.num(shopCart,result)}}" />
+			<van-icon custom-class="van" name="gift-o" wx:else size="40px" color="#1c92d2" />
 		</view>
 		<view class="total">
-			<text>￥{{computed.price(shopCart, result)}}元</text>
+			<text>￥{{computed.price(shopCart, result)}}分</text>
 		</view>
 		<view class="but">
-			<van-button round type="info" size="small" color="#1c92d2" bindtap="onSubmit">提交订单</van-button>
+			<van-button round type="info" size="small" color="#1c92d2" bindtap="onSubmit">确定兑换</van-button>
 		</view>
 		<view class="list" wx:show="{{visable}}">
 			<view class="listwrapper">
@@ -18,12 +18,12 @@
 						<text>你目前还能用的7豆有{{count}}个</text>
 					</view>
 					<view class="select" wx:if="{{shopCart.length>0}}">
-						<van-checkbox value="{{ allSelect }}" bind:change="onSelectAll">全选(已选1件，共0.5kg）</van-checkbox>
+						<van-checkbox value="{{ allSelect }}" bind:change="onSelectAll">全选</van-checkbox>
 						<view class="clear" bindtap="onClearShopCart">
 							<view>
 								<van-icon name="delete" />
 							</view>
-							<text>清空购物车</text>
+							<text>清空7享袋</text>
 						</view>
 					</view>
 					<view class="shops" wx:if="{{shopCart.length>0}}">
@@ -37,7 +37,7 @@
 						</van-checkbox-group>
 					</view>
 					<view class="nothing" wx:else>
-						<text>购物车没空</text>
+						<text>7享袋空空</text>
 					</view>
 				</view>
 			</view>

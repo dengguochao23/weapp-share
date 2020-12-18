@@ -12,8 +12,8 @@
   </view>
   <view class="rule">
     <text>活动说明</text>
-    <text>1、每次活动每人仅有三次抽奖机会</text>
-    <text>2、每次抽奖获得的分数会及时转自个人账号那里</text>
+    <text>1、每次活动每人仅有三次转盘机会</text>
+    <text>2、每次转盘获得的分数会及时转自个人账号那里</text>
   </view>
   <van-dialog id="van-dialog" />
 </view>

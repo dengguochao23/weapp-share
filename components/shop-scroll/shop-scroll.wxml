@@ -12,11 +12,11 @@
 					<van-image class="img" width="80" height="80" src="{{item.image}}" />
 					<view class="content">
 						<text>物品： {{item.name}}</text>
-						<text>价格： {{item.price}}</text>
+						<text>分值： {{item.price}}</text>
 						<text>库存： {{item.stock}}</text>
 						<cart-control bind:less="onLess" bind:add="onAdd" data-shop="{{item}}" max="{{item.stock}}" num="{{normalTool.shopCartComputeNum(shopCart, item.id)}}"></cart-control>
 						<view class="null" wx-if="{{item.stock===0}}">
-							<text>没货啦</text>
+							<text>已兑换完</text>
 						</view>
 					</view>
 				</view>
